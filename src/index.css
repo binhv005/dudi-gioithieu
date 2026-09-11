@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  /* Ensure all sections have proper scroll margin for sticky header */
+  section[id] {
+    scroll-margin-top: 3.8rem;
+  }
+
+  /* Accessibility focus ring compliant with WCAG AA */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-[#EC1420] ring-offset-2 ring-offset-white;
+  }
+}
+
+/* Smooth base transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll reveal utility animations */
+@keyframes sectionSlideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Custom Gradient & Glass Utilities */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.gradient-brand-border {
+  position: relative;
+  background: linear-gradient(135deg, rgba(236, 20, 32, 0.15), rgba(255, 46, 59, 0.05));
+}
+
+.gradient-text-brand {
+  background: linear-gradient(135deg, #0F172A 0%, #EC1420 70%, #B91C1C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge-brand-glow {
+  box-shadow: 0 0 20px -3px rgba(236, 20, 32, 0.35);
+}
+
+/* Water-ripple / Loang sóng tỏa animations for floating widgets */
+@keyframes ripple-wave {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-ripple-1 {
+  animation: ripple-wave 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.animate-ripple-2 {
+  animation: ripple-wave 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite 0.8s;
+}
+
+.animate-ripple-3 {
+  animation: ripple-wave 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite 1.6s;
+}
+
+/* Floating 3D rocket astronaut animation */
+@keyframes float-gentle {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+/* Floating 3D rocket astronaut animation */
+@keyframes rocket-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-18px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-rocket-float {
+  animation: rocket-float 3.5s ease-in-out infinite;
+  will-change: transform;
+}
