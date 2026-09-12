@@ -222,14 +222,14 @@ export default function LeadForm({ selectedPackage, onSelectPackage }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
 
           {/* LEFT: Mascot Illustration */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center text-center order-2 lg:order-1">
+          <div className="hidden lg:flex lg:col-span-4 flex-col items-center justify-center text-center order-2 lg:order-1">
             <div className="relative group max-w-[160px] sm:max-w-[200px] lg:max-w-[230px] mx-auto">
               {/* Mascot background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-red-600/20 via-red-500/10 to-transparent rounded-full blur-xl pointer-events-none" />
 
               {/* Mascot Image */}
               <img
-                src="/dudi-mascot-laptop.png"
+                src="/dudi-mascot-laptop.webp"
                 alt="DUDI Mascot AI Consultant"
                 className="relative z-10 w-full h-auto object-contain drop-shadow-xl transition-transform duration-300 hover:scale-105"
                 loading="lazy"
@@ -241,7 +241,7 @@ export default function LeadForm({ selectedPackage, onSelectPackage }) {
           <div className="lg:col-span-8 order-1 lg:order-2 relative">
 
             {/* Robot Head Mascot Peeking at Top-Right Corner */}
-            <div className="absolute -top-6 -right-2 sm:-top-8 sm:-right-3.5 w-13 sm:w-16 md:w-18 z-30 pointer-events-none drop-shadow-xl select-none">
+            <div className="absolute -top-4 right-2 sm:-top-7 sm:-right-2 md:-top-8 md:-right-3.5 w-10 sm:w-14 md:w-16 z-30 pointer-events-none drop-shadow-lg select-none">
               <img
                 src="/robot-head.webp"
                 alt="DUDI Robot"

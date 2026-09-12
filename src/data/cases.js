@@ -11,8 +11,8 @@ export const REAL_PROJECTS = [
     displayUrl: "odysseyhagiangloop.com",
     price: "11,5 triệu",
     priceUnit: "/ trọn gói",
-    image: "/cases/odyssey-hagiang-hd.jpg",
-    secondaryImage: "/cases/odyssey-hagiang.jpg",
+    image: "/cases/odyssey-hagiang-hd.webp",
+    secondaryImage: "/cases/odyssey-hagiang.webp",
     caption: "odysseyhagiangloop.com — Giao diện thực tế",
     desc: "Nền tảng đặt tour du lịch cao cấp khám phá Hà Giang, tối ưu trải nghiệm và tỷ lệ chuyển đổi cho khách quốc tế.",
     highlights: [
@@ -46,8 +46,8 @@ export const REAL_PROJECTS = [
     displayUrl: "caonguyenxanh.com.vn",
     price: "3,5 triệu",
     priceUnit: "/ trọn gói",
-    image: "/cases/caonguyenxanh-hd.jpg",
-    secondaryImage: "/cases/caonguyenxanh.jpg",
+    image: "/cases/caonguyenxanh-hd.webp",
+    secondaryImage: "/cases/caonguyenxanh.webp",
     caption: "caonguyenxanh.com.vn — Giao diện thực tế",
     desc: "Website hồ sơ năng lực doanh nghiệp sản xuất bao bì giấy, hộp cứng và tem nhãn công nghiệp chuẩn B2B.",
     highlights: [

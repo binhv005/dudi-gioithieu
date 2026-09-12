@@ -69,7 +69,7 @@ export default function CaseStudies() {
           {project.id === 'project-1' && (
             <div className="hidden lg:flex absolute inset-0 pointer-events-none select-none z-0 overflow-hidden items-end justify-end">
               <img
-                src="/cases/hagiang-loop-road.jpg"
+                src="/cases/hagiang-loop-road.webp"
                 alt="Ha Giang Loop Winding Road Background"
                 className="w-full max-w-[600px] lg:max-w-[700px] h-full object-cover object-right opacity-25 mix-blend-luminosity transition-opacity duration-500"
                 width={800}
@@ -105,7 +105,7 @@ export default function CaseStudies() {
                   alt={project.title}
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = project.secondaryImage || '/cases/odyssey-hagiang-hd.jpg';
+                    e.target.src = project.secondaryImage || '/cases/odyssey-hagiang-hd.webp';
                   }}
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 select-none"
                   width={600}

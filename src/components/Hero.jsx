@@ -190,7 +190,7 @@ export default function Hero({ onSelectPackage }) {
           </div>
 
           {/* Right Column: Astronaut Rocket 3D Graphic with Infinite Floating Animation */}
-          <div className="lg:col-span-6 relative flex items-center justify-center pt-2 sm:pt-4">
+          <div className="hidden lg:flex lg:col-span-6 relative items-center justify-center pt-2 sm:pt-4">
 
             {/* Scoped CSS Keyframe for Mascot Floating Motion */}
             <style dangerouslySetInnerHTML={{

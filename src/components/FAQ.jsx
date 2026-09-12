@@ -34,9 +34,9 @@ export default function FAQ() {
             </div>
 
             {/* 3D Mascot Illustration Box */}
-            <div className="relative rounded-2xl overflow-hidden shadow-md max-w-[280px] sm:max-w-[320px] mx-auto lg:mx-0 group border border-slate-200/80 bg-white">
+            <div className="hidden lg:block relative rounded-2xl overflow-hidden shadow-md max-w-[280px] sm:max-w-[320px] mx-auto lg:mx-0 group border border-slate-200/80 bg-white">
               <img
-                src="/faq-mascot-illustration.png"
+                src="/faq-mascot-illustration.webp"
                 alt="DUDI Software FAQ Mascot"
                 className="w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
