@@ -1,4 +1,3 @@
-// 4 Nhóm đối tượng - Tối ưu Bento Grid với Micro-tags & Two-layer Typography
 export const AUDIENCES = [
   {
     id: "individual",
@@ -7,6 +6,7 @@ export const AUDIENCES = [
     headline: "Có website nhanh, chi phí tối ưu",
     suggestedPackage: "Cơ bản",
     packageId: "basic",
+    image: "/cases/caonguyenxanh.webp",
     tags: ["1–4 Trang", "Tiết kiệm", "Mobile Ready"],
     metric: "Từ 3 Triệu"
   },
@@ -18,6 +18,7 @@ export const AUDIENCES = [
     suggestedPackage: "Tiêu chuẩn",
     packageId: "standard",
     recommended: true,
+    image: "/cases/odyssey-hagiang.webp",
     tags: ["CMS Tự Sửa Bài", "Module Blog", "SEO On-page"],
     metric: "Khuyên Dùng"
   },
@@ -28,6 +29,7 @@ export const AUDIENCES = [
     headline: "Showcase năng lực và dự án theo ngành",
     suggestedPackage: "Cao cấp",
     packageId: "premium",
+    image: "/cases/audience-branding.jpg",
     tags: ["UI May Đo", "Showcase Dự Án", "Chuẩn B2B"],
     metric: "Thiết Kế Riêng"
   },
@@ -38,6 +40,7 @@ export const AUDIENCES = [
     headline: "Phễu form đa tầng, gắn nguồn chiến dịch",
     suggestedPackage: "Cao cấp",
     packageId: "premium",
+    image: "/cases/audience-leadgen.jpg",
     tags: ["Tracking UTM", "Form Đa Trường", "Chống Spam"],
     metric: "Tối Đa Lead"
   }

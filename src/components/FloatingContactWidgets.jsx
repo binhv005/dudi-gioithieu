@@ -115,17 +115,12 @@ export default function FloatingContactWidgets() {
           onMouseLeave={() => setHovered(null)}
           onFocus={() => setHovered('hotline')}
           onBlur={() => setHovered(null)}
-          className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-[#D60F1A] via-[#EC1420] to-[#FF3B47] text-white flex items-center justify-center shadow-2xl shadow-red-600/40 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400 group cursor-pointer"
+          className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-[#D60F1A] via-[#EC1420] to-[#FF3B47] text-white flex items-center justify-center shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400 group cursor-pointer"
           title="Hotline: 0909 163 821 (Desktop: Sao chép | Mobile: Gọi trực tiếp)"
           aria-label="Hotline 0909 163 821"
         >
-          {/* Multi-layer Water Ripple Waves / Hiệu ứng loang sóng nước */}
-          <span className="absolute inset-0 rounded-full bg-red-500 animate-ripple-1 pointer-events-none" />
-          <span className="absolute inset-0 rounded-full bg-red-500 animate-ripple-2 pointer-events-none" />
-          <span className="absolute inset-0 rounded-full bg-red-500 animate-ripple-3 pointer-events-none" />
-
-          {/* Ringing Phone Icon */}
-          <Phone className="relative z-10 w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-200 drop-shadow-xs" />
+          {/* Phone Icon */}
+          <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-200" />
         </a>
       </div>
 
@@ -148,17 +143,12 @@ export default function FloatingContactWidgets() {
           onMouseLeave={() => setHovered(null)}
           onFocus={() => setHovered('zalo')}
           onBlur={() => setHovered(null)}
-          className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#0068FF] hover:bg-[#0057D9] text-white flex items-center justify-center shadow-2xl shadow-blue-500/40 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400 group"
+          className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#0068FF] hover:bg-[#0057D9] text-white flex items-center justify-center shadow-lg shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400 group cursor-pointer"
           title="Chat Zalo: 0909 163 821"
           aria-label="Chat Zalo DUDI Software"
         >
-          {/* Multi-layer Water Ripple Waves / Hiệu ứng loang sóng nước */}
-          <span className="absolute inset-0 rounded-full bg-[#0068FF] animate-ripple-1 pointer-events-none" />
-          <span className="absolute inset-0 rounded-full bg-[#0068FF] animate-ripple-2 pointer-events-none" />
-          <span className="absolute inset-0 rounded-full bg-[#0068FF] animate-ripple-3 pointer-events-none" />
-
           {/* Official Zalo Text Branding */}
-          <span className="relative z-10 font-black text-[13px] sm:text-[14px] tracking-tight text-white select-none drop-shadow-xs group-hover:scale-105 transition-transform">
+          <span className="font-black text-[13px] sm:text-[14px] tracking-tight text-white select-none group-hover:scale-105 transition-transform">
             Zalo
           </span>
         </a>

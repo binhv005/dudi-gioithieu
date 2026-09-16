@@ -13,7 +13,6 @@ import LeadForm from './components/LeadForm';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import FloatingContactWidgets from './components/FloatingContactWidgets';
-import ScrollReveal from './components/ScrollReveal';
 
 export default function App() {
   const [selectedPackage, setSelectedPackage] = useState('standard');
@@ -42,61 +41,41 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1">
-        {/* S02: Hero (Immediate Load) */}
+        {/* S02: Hero */}
         <Hero onSelectPackage={handleSelectPackage} />
 
         {/* S03: Audience */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <Audience onSelectPackage={handleSelectPackage} />
-        </ScrollReveal>
+        <Audience onSelectPackage={handleSelectPackage} />
 
         {/* S04: Problems */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <Problems />
-        </ScrollReveal>
+        <Problems />
 
         {/* S05: Deliverables */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <Deliverables />
-        </ScrollReveal>
+        <Deliverables />
 
         {/* S06: Pricing & Disclaimers */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <Pricing onSelectPackage={handleSelectPackage} />
-        </ScrollReveal>
+        <Pricing onSelectPackage={handleSelectPackage} />
 
         {/* S07: Case Studies Showcase */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <CaseStudies />
-        </ScrollReveal>
+        <CaseStudies />
 
         {/* S08: Process */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <Process />
-        </ScrollReveal>
+        <Process />
 
         {/* S09: Fit & Non-fit */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <FitSection onSelectPackage={handleSelectPackage} />
-        </ScrollReveal>
+        <FitSection onSelectPackage={handleSelectPackage} />
 
         {/* S10: FAQ Accordion */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <FAQ />
-        </ScrollReveal>
+        <FAQ />
 
         {/* S11: Lead Form */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <LeadForm
-            selectedPackage={selectedPackage}
-            onSelectPackage={handleSelectPackage}
-          />
-        </ScrollReveal>
+        <LeadForm
+          selectedPackage={selectedPackage}
+          onSelectPackage={handleSelectPackage}
+        />
 
         {/* S12: Final CTA */}
-        <ScrollReveal direction="up" distance="45px" duration={800} threshold={0.12} once={false}>
-          <FinalCTA onSelectPackage={handleSelectPackage} />
-        </ScrollReveal>
+        <FinalCTA onSelectPackage={handleSelectPackage} />
       </main>
 
       {/* S13: Footer */}

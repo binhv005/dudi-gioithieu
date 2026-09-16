@@ -30,47 +30,23 @@ export default function Process() {
 
   return (
     <section id="process" className="py-6 sm:py-8 lg:py-9 bg-white border-t border-slate-200/70 relative overflow-hidden">
-
-      {/* Background Subtle Tech Grid Accent */}
-      <div
-        className="absolute inset-0 opacity-[0.35] pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #E2E8F0 1px, transparent 0)`,
-          backgroundSize: '24px 24px'
-        }}
-      />
-
-      {/* Tech Hexagon Corner Background - Top Right (Larger & Spread Outward) */}
-      <img
-        src="/tech-hexagon-bg.webp"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute -top-12 -right-12 sm:-top-16 sm:-right-16 lg:-top-20 lg:-right-20 w-72 sm:w-96 lg:w-[460px] xl:w-[520px] h-auto opacity-40 mix-blend-multiply z-0"
-      />
-
-      {/* Tech Hexagon Corner Background - Bottom Left (Larger & Spread Outward) */}
-      <img
-        src="/tech-hexagon-bg.webp"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute -bottom-12 -left-12 sm:-bottom-16 sm:-left-16 lg:-bottom-20 lg:-left-20 w-72 sm:w-96 lg:w-[460px] xl:w-[520px] h-auto opacity-40 mix-blend-multiply rotate-180 z-0"
-      />
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Section Header - Compact */}
-        <div className="text-center max-w-xl mx-auto mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100/90 border border-amber-300/70 text-amber-950 text-[10px] font-bold uppercase tracking-wider mb-1.5 shadow-xs">
-            <Sparkles className="w-3 h-3 text-amber-700" />
-            <span>Quy trình 6 bước</span>
+        <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
+          <div className="text-center max-w-xl mx-auto mb-5 sm:mb-6">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100/90 border border-amber-300/70 text-amber-950 text-[10px] font-bold uppercase tracking-wider mb-1.5 shadow-xs">
+              <Sparkles className="w-3 h-3 text-amber-700" />
+              <span>Quy trình 6 bước</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight mb-1">
+              Quy trình phối hợp khoa học
+            </h2>
+            <p className="text-[11.5px] sm:text-xs text-slate-600 leading-snug max-w-md mx-auto">
+              Nguyên tắc chuẩn DUDI: <strong className="text-slate-900 font-bold">Không lập trình trước khi duyệt sitemap và UI chính</strong>.
+            </p>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-tight mb-1">
-            Quy trình phối hợp khoa học
-          </h2>
-          <p className="text-[11.5px] sm:text-xs text-slate-600 leading-snug max-w-md mx-auto">
-            Nguyên tắc chuẩn DUDI: <strong className="text-slate-900 font-bold">Không lập trình trước khi duyệt sitemap và UI chính</strong>.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Horizontal Stepper matching Reference Image - Compact */}
         <ScrollReveal direction="up" delay={100} duration={600} threshold={0.1} once={true}>

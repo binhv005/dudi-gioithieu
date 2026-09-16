@@ -2,6 +2,7 @@ import React from 'react';
 import { PACKAGES, PRICING_DISCLAIMER } from '../data/packages';
 import { Sparkles, ArrowRight, Info, Check } from 'lucide-react';
 import { trackCtaClick, trackPackageSelect } from '../utils/tracking';
+import ScrollReveal from './ScrollReveal';
 
 export default function Pricing({ onSelectPackage }) {
   const handlePackageClick = (e, pkg) => {
@@ -118,131 +119,144 @@ export default function Pricing({ onSelectPackage }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-3 sm:mb-4">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-surface border border-red-200/80 text-brand-primary text-[10px] font-bold uppercase tracking-wider mb-0.5">
-            Bảng giá & Phạm vi
+        <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
+          <div className="text-center max-w-xl mx-auto mb-3 sm:mb-4">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-surface border border-red-200/80 text-brand-primary text-[10px] font-bold uppercase tracking-wider mb-0.5">
+              Bảng giá & Phạm vi
+            </div>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight">
+              Bảng giá minh bạch — Đúng cam kết, không phí ẩn
+            </h2>
+            <p className="text-[11px] text-slate-500">
+              Thanh toán một lần theo dự án, không phát sinh chi phí trong phạm vi thống nhất.
+            </p>
           </div>
-          <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight">
-            Bảng giá minh bạch — Đúng cam kết, không phí ẩn
-          </h2>
-          <p className="text-[11px] text-slate-500">
-            Thanh toán một lần theo dự án, không phát sinh chi phí trong phạm vi thống nhất.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        {/* 3 Pricing Cards: Styled exactly like Image 2 with Prominent Center Card */}
+        {/* 3 Pricing Cards: Styled with Staggered ScrollReveal */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 lg:gap-4 items-center max-w-5xl mx-auto mb-3 pt-2">
-          {PACKAGES.map((pkg) => {
+          {PACKAGES.map((pkg, idx) => {
             const isStandard = pkg.recommended;
             const theme = cardThemes[pkg.id] || cardThemes.basic;
 
             return (
-              <div
+              <ScrollReveal
                 key={pkg.id}
-                className={`group relative rounded-3xl bg-white flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
-                  isStandard
-                    ? `shadow-xl shadow-red-500/20 border-2 border-[#EC1420] md:-translate-y-2 z-20 ring-4 ring-red-500/10 hover:-translate-y-4 hover:scale-[1.015] ${theme.hoverShadow}`
-                    : `shadow-md border border-slate-200/80 hover:-translate-y-2.5 hover:border-slate-300 ${theme.hoverShadow} ${theme.hoverBorder} z-10`
-                }`}
+                direction="up"
+                distance="40px"
+                delay={idx * 130}
+                duration={650}
+                threshold={0.05}
+                className="h-full flex flex-col"
               >
-                {/* Floating "LỰA CHỌN PHỔ BIẾN" Badge on Standard Card */}
-                {isStandard && (
-                  <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-wider whitespace-nowrap shadow-md flex items-center gap-1 z-30 transition-transform duration-300 group-hover:scale-105">
-                    <Sparkles className="w-3 h-3 text-red-600 animate-pulse" />
-                    <span>LỰA CHỌN PHỔ BIẾN</span>
-                  </div>
-                )}
+                <div
+                  className={`group relative rounded-3xl bg-white flex-1 flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300 ease-out ${
+                    isStandard
+                      ? `shadow-xl shadow-red-500/20 border-2 border-[#EC1420] md:-translate-y-2 z-20 ring-4 ring-red-500/10 hover:-translate-y-4 hover:scale-[1.015] ${theme.hoverShadow}`
+                      : `shadow-md border border-slate-200/80 hover:-translate-y-2.5 hover:border-slate-300 ${theme.hoverShadow} ${theme.hoverBorder} z-10`
+                  }`}
+                >
+                  {/* Floating "LỰA CHỌN PHỔ BIẾN" Badge on Standard Card */}
+                  {isStandard && (
+                    <div className="absolute top-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-white text-red-600 text-[10px] font-black uppercase tracking-wider whitespace-nowrap shadow-md flex items-center gap-1 z-30 transition-transform duration-300 group-hover:scale-105">
+                      <Sparkles className="w-3 h-3 text-red-600 animate-pulse" />
+                      <span>LỰA CHỌN PHỔ BIẾN</span>
+                    </div>
+                  )}
 
-                {/* Top Wavy Colored Header Banner */}
-                <div className={`relative bg-gradient-to-b ${theme.headerGradient} text-white pt-6 pb-7 px-4 flex flex-col items-center text-center overflow-hidden transition-all duration-300`}>
-                  {/* Subtle hover background highlight shimmer */}
-                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300 pointer-events-none" />
+                  {/* Top Wavy Colored Header Banner */}
+                  <div className={`relative bg-gradient-to-b ${theme.headerGradient} text-white pt-6 pb-7 px-4 flex flex-col items-center text-center overflow-hidden transition-all duration-300`}>
+                    {/* Subtle hover background highlight shimmer */}
+                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300 pointer-events-none" />
 
-                  {/* Vehicle Graphic Illustration with interactive hover motion */}
-                  <div className={`mb-1 transform transition-all duration-500 ease-out ${theme.vehicleMotion}`}>
-                    {theme.vehicleIcon}
-                  </div>
-
-                  {/* English Package Title (Like Image 2: BASIC, STANDARD, PREMIUM) */}
-                  <h3 className="text-base sm:text-lg font-black tracking-wider uppercase text-white drop-shadow-xs transition-transform duration-300 group-hover:scale-105">
-                    {theme.englishTitle}
-                  </h3>
-
-                  <span className="text-[10.5px] font-medium text-white/90">
-                    Gói {pkg.name} • {pkg.target}
-                  </span>
-
-                  {/* SVG Smooth Wave Transition into White Body (Matching Image 2 curve) */}
-                  <svg
-                    viewBox="0 0 500 60"
-                    preserveAspectRatio="none"
-                    className="absolute -bottom-0.5 left-0 w-full h-5 sm:h-6 text-white pointer-events-none"
-                    fill="currentColor"
-                  >
-                    <path d="M 0 30 C 150 65, 350 -10, 500 30 L 500 60 L 0 60 Z" />
-                  </svg>
-                </div>
-
-                {/* White Card Body with Price & Features */}
-                <div className="px-4 sm:px-5 pt-2 pb-4 sm:pb-5 flex-1 flex flex-col justify-between bg-white text-center">
-
-                  <div>
-                    {/* Big Bold Price Display */}
-                    <div className="mb-2.5 pb-2 border-b border-slate-100 flex flex-col items-center">
-                      <div className="flex items-baseline justify-center gap-1">
-                        <span className="text-xs font-semibold text-slate-400">
-                          {pkg.priceLabel || 'Từ'}
-                        </span>
-                        <span className={`text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight transition-transform duration-300 group-hover:scale-105 ${isStandard ? 'text-[#EC1420]' : 'text-slate-900'}`}>
-                          {pkg.price || 'Liên hệ'}
-                        </span>
-                      </div>
-                      <p className="text-[10.5px] text-slate-500 line-clamp-1 font-normal">
-                        {pkg.objective}
-                      </p>
+                    {/* Vehicle Graphic Illustration with interactive hover motion */}
+                    <div className={`mb-1 transform transition-all duration-500 ease-out ${theme.vehicleMotion}`}>
+                      {theme.vehicleIcon}
                     </div>
 
-                    {/* Bullet Points with Color Dots (Like Image 2) */}
-                    <ul className="space-y-1.5 text-left mb-4 px-1">
-                      {pkg.features.slice(0, 5).map((feat, idx) => (
-                        <li key={idx} className="flex items-center gap-2 text-[11px] leading-tight text-slate-700 transition-transform duration-200 group-hover:translate-x-0.5">
-                          <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor} shrink-0 transition-transform duration-200 group-hover:scale-125`} />
-                          <span className={feat.highlight ? 'font-bold text-slate-900' : 'text-slate-600'}>
-                            {feat.text}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* English Package Title (BASIC, STANDARD, PREMIUM) */}
+                    <h3 className="text-base sm:text-lg font-black tracking-wider uppercase text-white drop-shadow-xs transition-transform duration-300 group-hover:scale-105">
+                      {theme.englishTitle}
+                    </h3>
+
+                    <span className="text-[10.5px] font-medium text-white/90">
+                      Gói {pkg.name} • {pkg.target}
+                    </span>
+
+                    {/* SVG Smooth Wave Transition into White Body */}
+                    <svg
+                      viewBox="0 0 500 60"
+                      preserveAspectRatio="none"
+                      className="absolute -bottom-0.5 left-0 w-full h-5 sm:h-6 text-white pointer-events-none"
+                      fill="currentColor"
+                    >
+                      <path d="M 0 30 C 150 65, 350 -10, 500 30 L 500 60 L 0 60 Z" />
+                    </svg>
                   </div>
 
-                  {/* Rounded Pill Action Button (BUY / Chọn gói - matching Image 2 pill) */}
-                  <div className="pt-1">
-                    <a
-                      href="#lead-form"
-                      onClick={(e) => handlePackageClick(e, pkg)}
-                      className={`w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider text-white transition-all duration-300 active:scale-95 cursor-pointer shadow-md group-hover:shadow-lg ${theme.btnBg} ${
-                        isStandard ? 'shadow-red-500/30 group-hover:shadow-red-500/50' : ''
-                      }`}
-                    >
-                      <span>{pkg.ctaText}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-300 group-hover:translate-x-1.5" />
-                    </a>
+                  {/* White Card Body with Price & Features */}
+                  <div className="px-4 sm:px-5 pt-2 pb-4 sm:pb-5 flex-1 flex flex-col justify-between bg-white text-center">
+
+                    <div>
+                      {/* Big Bold Price Display */}
+                      <div className="mb-2.5 pb-2 border-b border-slate-100 flex flex-col items-center">
+                        <div className="flex items-baseline justify-center gap-1">
+                          <span className="text-xs font-semibold text-slate-400">
+                            {pkg.priceLabel || 'Từ'}
+                          </span>
+                          <span className={`text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight transition-transform duration-300 group-hover:scale-105 ${isStandard ? 'text-[#EC1420]' : 'text-slate-900'}`}>
+                            {pkg.price || 'Liên hệ'}
+                          </span>
+                        </div>
+                        <p className="text-[10.5px] text-slate-500 line-clamp-1 font-normal">
+                          {pkg.objective}
+                        </p>
+                      </div>
+
+                      {/* Bullet Points with Color Dots */}
+                      <ul className="space-y-1.5 text-left mb-4 px-1">
+                        {pkg.features.slice(0, 5).map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-2 text-[11px] leading-tight text-slate-700 transition-transform duration-200 group-hover:translate-x-0.5">
+                            <span className={`w-1.5 h-1.5 rounded-full ${theme.dotColor} shrink-0 transition-transform duration-200 group-hover:scale-125`} />
+                            <span className={feat.highlight ? 'font-bold text-slate-900' : 'text-slate-600'}>
+                              {feat.text}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Rounded Pill Action Button */}
+                    <div className="pt-1">
+                      <a
+                        href="#lead-form"
+                        onClick={(e) => handlePackageClick(e, pkg)}
+                        className={`w-full inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full text-xs font-black uppercase tracking-wider text-white transition-all duration-300 active:scale-95 cursor-pointer shadow-md group-hover:shadow-lg ${theme.btnBg} ${
+                          isStandard ? 'shadow-red-500/30 group-hover:shadow-red-500/50' : ''
+                        }`}
+                      >
+                        <span>{pkg.ctaText}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-white transition-transform duration-300 group-hover:translate-x-1.5" />
+                      </a>
+                    </div>
+
                   </div>
 
                 </div>
-
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
 
-        {/* Minimal Compact Disclaimer Note (Keeps section fitting in 1 screen) */}
-        <div className="text-center max-w-2xl mx-auto">
-          <p className="text-[10px] text-slate-500 inline-flex items-center gap-1.5 bg-white/80 px-3 py-1 rounded-full border border-slate-200/80 shadow-2xs">
-            <Info className="w-3 h-3 text-brand-primary shrink-0" />
-            <span>Giá thanh toán 01 lần theo dự án, không phí ẩn. Chưa bao gồm Domain/Hosting và các module ERP chuyên sâu.</span>
-          </p>
-        </div>
+        {/* Minimal Compact Disclaimer Note */}
+        <ScrollReveal direction="up" distance="20px" delay={300} duration={600} threshold={0.05}>
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="text-[10px] text-slate-500 inline-flex items-center gap-1.5 bg-white/80 px-3 py-1 rounded-full border border-slate-200/80 shadow-2xs">
+              <Info className="w-3 h-3 text-brand-primary shrink-0" />
+              <span>Giá thanh toán 01 lần theo dự án, không phí ẩn. Chưa bao gồm Domain/Hosting và các module ERP chuyên sâu.</span>
+            </p>
+          </div>
+        </ScrollReveal>
 
       </div>
     </section>

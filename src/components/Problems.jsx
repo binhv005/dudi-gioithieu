@@ -7,12 +7,9 @@ import {
   FolderKanban,
   MessageSquareDashed,
   Lock,
-  AlertTriangle,
-  TrendingDown,
-  Building2,
-  ShieldX,
-  Flame
+  AlertTriangle
 } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function Problems() {
   const [hoveredId, setHoveredId] = useState(null);
@@ -89,69 +86,61 @@ export default function Problems() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section Header (Ultra Compact for Single-Screen View) */}
-        <div className="text-center max-w-xl mx-auto mb-2 sm:mb-3">
-          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200/90 text-red-600 text-[10px] font-black uppercase tracking-wider mb-1 shadow-2xs">
-            <AlertTriangle className="w-3 h-3 text-red-500" />
-            <span>Thực trạng doanh nghiệp</span>
+        {/* Section Header */}
+        <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
+          <div className="text-center max-w-xl mx-auto mb-2 sm:mb-3">
+            <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200/90 text-red-600 text-[10px] font-black uppercase tracking-wider mb-1 shadow-2xs">
+              <AlertTriangle className="w-3 h-3 text-red-500" />
+              <span>Thực trạng doanh nghiệp</span>
+            </div>
+            <h2 className="text-lg sm:text-xl lg:text-[22px] font-black text-slate-900 tracking-tight leading-tight">
+              Rào cản khi chưa sở hữu website bài bản
+            </h2>
+            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-normal">
+              Tránh lãng phí ngân sách và rủi ro thất thoát khách hàng tiềm năng.
+            </p>
           </div>
-          <h2 className="text-lg sm:text-xl lg:text-[22px] font-black text-slate-900 tracking-tight leading-tight">
-            Rào cản khi chưa sở hữu website bài bản
-          </h2>
-          <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-normal">
-            Tránh lãng phí ngân sách và rủi ro thất thoát khách hàng tiềm năng.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Desktop Layout: 3 Columns (Fit within 1 screen height) */}
+        {/* Desktop Layout: 3 Columns */}
         <div className="hidden lg:grid lg:grid-cols-12 gap-3 xl:gap-4 items-center">
 
           {/* Left Column: 2 Sleek Pain-Point Metric Cards */}
-          <div className="lg:col-span-3 flex flex-col gap-2.5">
-            <div className="flex items-center gap-1.5 pb-0.5 border-b border-red-200/60">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-wider text-slate-700">Tác động chuyển đổi</span>
-            </div>
-
-            {/* Left Card 1 */}
-            <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-red-50 text-red-600 flex items-center justify-center border border-red-100">
-                  <TrendingDown className="w-3.5 h-3.5" />
-                </div>
-                <span className="text-[10px] font-black text-red-600 bg-red-50 px-2 py-0.2 rounded-full border border-red-200">
-                  75% Khách hàng
-                </span>
+          <ScrollReveal direction="left" distance="35px" delay={100} duration={650} threshold={0.05} className="lg:col-span-3">
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-1.5 pb-0.5 border-b border-red-200/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-wider text-slate-700">Tác động chuyển đổi</span>
               </div>
-              <h3 className="text-xs font-black text-slate-900 mb-0.5">
-                Mất uy tín ngay từ đầu
-              </h3>
-              <p className="text-[10.5px] text-slate-600 leading-snug font-normal line-clamp-2">
-                Khách hàng đánh giá độ tin cậy trong 3s đầu tiên qua giao diện website.
-              </p>
-            </div>
 
-            {/* Left Card 2 */}
-            <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-100">
-                  <Flame className="w-3.5 h-3.5" />
+              {/* Left Card 1 */}
+              <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-black text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200">
+                    75% Khách hàng
+                  </span>
                 </div>
-                <span className="text-[10px] font-black text-amber-600 bg-amber-50 px-2 py-0.2 rounded-full border border-amber-200">
-                  Lãng phí 3.2x
-                </span>
+                <h3 className="text-xs font-black text-slate-900 leading-snug">
+                  Mất uy tín ngay từ đầu
+                </h3>
               </div>
-              <h3 className="text-xs font-black text-slate-900 mb-0.5">
-                Thất thoát chi phí Ads
-              </h3>
-              <p className="text-[10.5px] text-slate-600 leading-snug font-normal line-clamp-2">
-                Quảng cáo thiếu trang đích chuẩn khiến tỷ lệ rớt lead tăng &gt; 65%.
-              </p>
-            </div>
-          </div>
 
-          {/* Center Column: 360° Circular Wheel (Sleek, Proportional, No Collisions) */}
-          <div className="lg:col-span-6 flex justify-center items-center">
+              {/* Left Card 2 */}
+              <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-black text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                    Lãng phí 3.2x
+                  </span>
+                </div>
+                <h3 className="text-xs font-black text-slate-900 leading-snug">
+                  Thất thoát chi phí Ads
+                </h3>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Center Column: 360° Circular Wheel */}
+          <ScrollReveal direction="zoom" distance="20px" delay={200} duration={700} threshold={0.05} className="lg:col-span-6 flex justify-center items-center">
             <div className="relative w-[340px] h-[340px] xl:w-[360px] xl:h-[360px] flex items-center justify-center">
 
               {/* Outer Circular SVG Track */}
@@ -254,155 +243,149 @@ export default function Problems() {
               })}
 
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: 2 Sleek Pain-Point Metric Cards */}
-          <div className="lg:col-span-3 flex flex-col gap-2.5">
-            <div className="flex items-center gap-1.5 pb-0.5 border-b border-red-200/60">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-wider text-slate-700">Rủi ro kinh doanh</span>
-            </div>
-
-            {/* Right Card 1 */}
-            <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
-                  <Building2 className="w-3.5 h-3.5" />
-                </div>
-                <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2 py-0.2 rounded-full border border-blue-200">
-                  88% Doanh nghiệp
-                </span>
+          <ScrollReveal direction="right" distance="35px" delay={300} duration={650} threshold={0.05} className="lg:col-span-3">
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center gap-1.5 pb-0.5 border-b border-red-200/60">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                <span className="text-[10px] font-black uppercase tracking-wider text-slate-700">Rủi ro kinh doanh</span>
               </div>
-              <h3 className="text-xs font-black text-slate-900 mb-0.5">
-                Khó chào thầu & chốt Deal
-              </h3>
-              <p className="text-[10.5px] text-slate-600 leading-snug font-normal line-clamp-2">
-                Đối tác lớn luôn kiểm tra website chính thức trước khi duyệt ký hợp đồng.
-              </p>
-            </div>
 
-            {/* Right Card 2 */}
-            <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
-              <div className="flex items-center justify-between mb-1.5">
-                <div className="w-6 h-6 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100">
-                  <ShieldX className="w-3.5 h-3.5" />
+              {/* Right Card 1 */}
+              <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+                    88% Doanh nghiệp
+                  </span>
                 </div>
-                <span className="text-[10px] font-black text-purple-600 bg-purple-50 px-2 py-0.2 rounded-full border border-purple-200">
-                  100% Rủi ro
-                </span>
+                <h3 className="text-xs font-black text-slate-900 leading-snug">
+                  Khó chào thầu & chốt Deal
+                </h3>
               </div>
-              <h3 className="text-xs font-black text-slate-900 mb-0.5">
-                Phụ thuộc mạng xã hội
-              </h3>
-              <p className="text-[10.5px] text-slate-600 leading-snug font-normal line-clamp-2">
-                Bị động khi thuật toán thay đổi, bóp tương tác hoặc gián đoạn tài khoản.
-              </p>
+
+              {/* Right Card 2 */}
+              <div className="bg-white/95 rounded-xl p-3 border border-slate-200/80 shadow-sm hover:shadow-md hover:border-red-400/60 transition-all duration-200">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-[10px] font-black text-purple-600 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200">
+                    100% Rủi ro
+                  </span>
+                </div>
+                <h3 className="text-xs font-black text-slate-900 leading-snug">
+                  Phụ thuộc mạng xã hội
+                </h3>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 
         {/* Tablet View (md to lg) */}
         <div className="hidden md:flex lg:hidden justify-center items-center py-2">
-          <div className="relative w-[340px] h-[340px] flex items-center justify-center">
-            <svg viewBox="0 0 340 340" className="absolute inset-0 w-full h-full pointer-events-none select-none">
-              <circle cx="170" cy="170" r="130" fill="none" stroke="#EC1420" strokeWidth="2" strokeDasharray="6 4" className="opacity-85" />
-              <circle cx="170" cy="170" r="100" fill="none" stroke="#FCA5A5" strokeWidth="1" className="opacity-50" />
-            </svg>
+          <ScrollReveal direction="zoom" distance="20px" duration={650} threshold={0.05}>
+            <div className="relative w-[340px] h-[340px] flex items-center justify-center">
+              <svg viewBox="0 0 340 340" className="absolute inset-0 w-full h-full pointer-events-none select-none">
+                <circle cx="170" cy="170" r="130" fill="none" stroke="#EC1420" strokeWidth="2" strokeDasharray="6 4" className="opacity-85" />
+                <circle cx="170" cy="170" r="100" fill="none" stroke="#FCA5A5" strokeWidth="1" className="opacity-50" />
+              </svg>
 
-            <div className="relative z-10 w-[145px] h-[145px] flex items-center justify-center pointer-events-none select-none">
-              <img src="/robot-head.webp" alt="DUDI Mascot" className="w-[135px] h-[135px] object-contain drop-shadow-md" width={270} height={270} />
-            </div>
+              <div className="relative z-10 w-[145px] h-[145px] flex items-center justify-center pointer-events-none select-none">
+                <img src="/robot-head.webp" alt="DUDI Mascot" className="w-[135px] h-[135px] object-contain drop-shadow-md" width={270} height={270} />
+              </div>
 
-            {problemConfigs.map((cfg, index) => {
-              const prob = PROBLEMS[index];
-              const isHovered = hoveredId === prob.id;
+              {problemConfigs.map((cfg, index) => {
+                const prob = PROBLEMS[index];
+                const isHovered = hoveredId === prob.id;
 
-              return (
-                <div key={cfg.id} onMouseEnter={() => setHoveredId(prob.id)} onMouseLeave={() => setHoveredId(null)} className={`absolute ${cfg.posClass} z-20 cursor-pointer group`}>
-                  {!isHovered && (
-                    <div className={`absolute ${cfg.labelPosClass} whitespace-nowrap pointer-events-none transition-all duration-200 opacity-90 group-hover:opacity-100`}>
-                      <span className="px-2 py-0.5 rounded-full bg-white/95 border border-red-200 text-[10px] font-bold text-slate-800">
-                        {prob.title}
-                      </span>
-                    </div>
-                  )}
-
-                  {isHovered && (
-                    <div className={`absolute ${cfg.cardPosClass} z-40 w-[220px] bg-white rounded-xl p-3 border-2 border-red-500 shadow-xl pointer-events-none animate-fade-in`}>
-                      <div className="flex items-center gap-1.5 mb-1">
-                        <div className="w-5 h-5 rounded-full bg-brand-primary text-white font-black text-[10px] flex items-center justify-center">
-                          {cfg.num}
-                        </div>
-                        <span className="text-[9px] font-bold text-red-600 bg-red-50 px-1.5 py-0.2 rounded-full border border-red-200">
-                          {prob.badge}
+                return (
+                  <div key={cfg.id} onMouseEnter={() => setHoveredId(prob.id)} onMouseLeave={() => setHoveredId(null)} className={`absolute ${cfg.posClass} z-20 cursor-pointer group`}>
+                    {!isHovered && (
+                      <div className={`absolute ${cfg.labelPosClass} whitespace-nowrap pointer-events-none transition-all duration-200 opacity-90 group-hover:opacity-100`}>
+                        <span className="px-2 py-0.5 rounded-full bg-white/95 border border-red-200 text-[10px] font-bold text-slate-800">
+                          {prob.title}
                         </span>
                       </div>
-                      <h4 className="text-xs font-black text-slate-900 mb-0.5">{prob.title}</h4>
-                      <p className="text-[10px] text-slate-600 leading-snug mb-1">{prob.desc}</p>
-                      <span className="inline-flex items-center gap-1 px-2 py-0.2 rounded-full bg-red-600 text-white text-[8.5px] font-black uppercase">
-                        Mức độ: {prob.severity}
-                      </span>
-                    </div>
-                  )}
+                    )}
 
-                  <div className={`w-8 h-8 rounded-full bg-brand-primary text-white font-black text-[11px] flex items-center justify-center shadow-md ring-2 transition-all ${isHovered ? 'scale-115 ring-red-400' : 'ring-white hover:scale-105'}`}>
-                    {cfg.num}
+                    {isHovered && (
+                      <div className={`absolute ${cfg.cardPosClass} z-40 w-[220px] bg-white rounded-xl p-3 border-2 border-red-500 shadow-xl pointer-events-none animate-fade-in`}>
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <div className="w-5 h-5 rounded-full bg-brand-primary text-white font-black text-[10px] flex items-center justify-center">
+                            {cfg.num}
+                          </div>
+                          <span className="text-[9px] font-bold text-red-600 bg-red-50 px-1.5 py-0.2 rounded-full border border-red-200">
+                            {prob.badge}
+                          </span>
+                        </div>
+                        <h4 className="text-xs font-black text-slate-900 mb-0.5">{prob.title}</h4>
+                        <p className="text-[10px] text-slate-600 leading-snug mb-1">{prob.desc}</p>
+                        <span className="inline-flex items-center gap-1 px-2 py-0.2 rounded-full bg-red-600 text-white text-[8.5px] font-black uppercase">
+                          Mức độ: {prob.severity}
+                        </span>
+                      </div>
+                    )}
+
+                    <div className={`w-8 h-8 rounded-full bg-brand-primary text-white font-black text-[11px] flex items-center justify-center shadow-md ring-2 transition-all ${isHovered ? 'scale-115 ring-red-400' : 'ring-white hover:scale-105'}`}>
+                      {cfg.num}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </ScrollReveal>
         </div>
 
         {/* Mobile View */}
         <div className="md:hidden space-y-2.5">
-          <div className="flex justify-center mb-0.5">
-            <img src="/robot-head.webp" alt="DUDI Mascot" className="w-16 h-16 object-contain drop-shadow-md" width={64} height={64} />
-          </div>
+          <ScrollReveal direction="up" distance="25px" duration={600} threshold={0.05}>
+            <div className="flex justify-center mb-0.5">
+              <img src="/robot-head.webp" alt="DUDI Mascot" className="w-16 h-16 object-contain drop-shadow-md" width={64} height={64} />
+            </div>
 
-          <div className="flex items-center justify-center gap-1.5 flex-wrap">
-            {problemConfigs.map((cfg, idx) => {
-              const prob = PROBLEMS[idx];
-              const isSelected = hoveredId === prob.id || (!hoveredId && idx === 0);
+            <div className="flex items-center justify-center gap-1.5 flex-wrap mb-2">
+              {problemConfigs.map((cfg, idx) => {
+                const prob = PROBLEMS[idx];
+                const isSelected = hoveredId === prob.id || (!hoveredId && idx === 0);
 
+                return (
+                  <button
+                    key={cfg.id}
+                    onClick={() => setHoveredId(prob.id)}
+                    className={`w-8 h-8 rounded-full bg-brand-primary text-white font-bold text-xs flex items-center justify-center shadow-md transition-all ${isSelected ? 'ring-3 ring-red-400 scale-110' : 'opacity-80'
+                      }`}
+                  >
+                    {cfg.num}
+                  </button>
+                );
+              })}
+            </div>
+
+            {(() => {
+              const currentProb = PROBLEMS.find(p => p.id === (hoveredId || 'prob-1'));
+              const currentCfg = problemConfigs.find(c => c.id === (hoveredId || 'prob-1'));
               return (
-                <button
-                  key={cfg.id}
-                  onClick={() => setHoveredId(prob.id)}
-                  className={`w-8 h-8 rounded-full bg-brand-primary text-white font-bold text-xs flex items-center justify-center shadow-md transition-all ${isSelected ? 'ring-3 ring-red-400 scale-110' : 'opacity-80'
-                    }`}
-                >
-                  {cfg.num}
-                </button>
-              );
-            })}
-          </div>
-
-          {(() => {
-            const currentProb = PROBLEMS.find(p => p.id === (hoveredId || 'prob-1'));
-            const currentCfg = problemConfigs.find(c => c.id === (hoveredId || 'prob-1'));
-            return (
-              <div className="bg-white rounded-xl p-3 border-2 border-red-200 shadow-xs transition-all">
-                <div className="flex items-center gap-1.5 mb-1">
-                  <div className="w-5 h-5 rounded-full bg-brand-primary text-white font-bold text-[10px] flex items-center justify-center shadow-xs">
-                    {currentCfg.num}
+                <div className="bg-white rounded-xl p-3 border-2 border-red-200 shadow-xs transition-all">
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <div className="w-5 h-5 rounded-full bg-brand-primary text-white font-bold text-[10px] flex items-center justify-center shadow-xs">
+                      {currentCfg.num}
+                    </div>
+                    <h3 className="text-xs font-bold text-slate-900 flex-1">{currentProb.title}</h3>
+                    <span className="text-[9px] font-bold text-red-600 bg-red-50 px-1.5 py-0.2 rounded-full border border-red-100">
+                      {currentProb.badge}
+                    </span>
                   </div>
-                  <h3 className="text-xs font-bold text-slate-900 flex-1">{currentProb.title}</h3>
-                  <span className="text-[9px] font-bold text-red-600 bg-red-50 px-1.5 py-0.2 rounded-full border border-red-100">
-                    {currentProb.badge}
-                  </span>
+                  <p className="text-[10.5px] text-slate-600 leading-relaxed mb-1.5">{currentProb.desc}</p>
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-[9px]">
+                    <span className="text-slate-500">Tác động: {currentProb.badge}</span>
+                    <span className="px-2 py-0.2 rounded-full bg-red-600 text-white font-black uppercase">
+                      Mức độ: {currentProb.severity}
+                    </span>
+                  </div>
                 </div>
-                <p className="text-[10.5px] text-slate-600 leading-relaxed mb-1.5">{currentProb.desc}</p>
-                <div className="flex items-center justify-between pt-1 border-t border-slate-100 text-[9px]">
-                  <span className="text-slate-500">Tác động: {currentProb.badge}</span>
-                  <span className="px-2 py-0.2 rounded-full bg-red-600 text-white font-black uppercase">
-                    Mức độ: {currentProb.severity}
-                  </span>
-                </div>
-              </div>
-            );
-          })()}
+              );
+            })()}
+          </ScrollReveal>
         </div>
 
       </div>

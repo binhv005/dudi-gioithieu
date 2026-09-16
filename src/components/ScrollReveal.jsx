@@ -2,29 +2,26 @@ import React, { useEffect, useRef, useState } from 'react';
 
 /**
  * ScrollReveal Component
- * Ultra smooth, visible scroll-triggered entrance animation.
- * Features:
- * - Directional slides: 'up', 'down', 'left', 'right', 'zoom', 'fade'
- * - Staggered children support
- * - Dynamic threshold & viewport trigger
+ * High-performance, visible scroll-triggered reveal animation (AOS / Framer style).
  */
 export default function ScrollReveal({
   children,
   className = '',
   direction = 'up',
   delay = 0,
-  duration = 800,
-  distance = '40px',
-  threshold = 0.12,
-  once = false, // Set to false so user can see it every time they scroll into section
+  duration = 650,
+  distance = '36px',
+  threshold = 0.08,
+  rootMargin = '0px 0px -60px 0px',
+  once = true,
   as: Component = 'div',
+  style = {},
   ...rest
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef(null);
 
   useEffect(() => {
-    // Check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       setIsVisible(true);
@@ -46,7 +43,7 @@ export default function ScrollReveal({
       },
       {
         threshold,
-        rootMargin: '0px 0px -60px 0px', // Triggers right as user scrolls into the element
+        rootMargin,
       }
     );
 
@@ -60,9 +57,8 @@ export default function ScrollReveal({
         observer.unobserve(currentElem);
       }
     };
-  }, [threshold, once]);
+  }, [threshold, rootMargin, once]);
 
-  // Initial hidden transform styles
   const getTransform = () => {
     if (isVisible) return 'translate3d(0, 0, 0) scale(1)';
     switch (direction) {
@@ -75,7 +71,7 @@ export default function ScrollReveal({
       case 'right':
         return `translate3d(-${distance}, 0, 0)`;
       case 'zoom':
-        return 'scale(0.92)';
+        return 'scale(0.93) translate3d(0, 24px, 0)';
       case 'fade':
       default:
         return 'translate3d(0, 0, 0)';
@@ -85,13 +81,13 @@ export default function ScrollReveal({
   return (
     <Component
       ref={domRef}
-      className={`transition-all ${className}`}
+      className={className}
       style={{
+        ...style,
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
-        transitionDuration: `${duration}ms`,
+        transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1), transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1)`,
         transitionDelay: `${delay}ms`,
-        transitionTimingFunction: 'cubic-bezier(0.2, 0.9, 0.3, 1)', // Smooth dynamic spring easing
         willChange: 'opacity, transform',
       }}
       {...rest}
@@ -100,3 +96,4 @@ export default function ScrollReveal({
     </Component>
   );
 }
+

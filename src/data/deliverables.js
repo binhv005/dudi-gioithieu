@@ -63,22 +63,22 @@ export const FIT_DATA = {
     title: "DUDI RẤT PHÙ HỢP VỚI DOANH NGHIỆP:",
     subtitle: "Dành cho các doanh nghiệp cần tính minh bạch, tốc độ và chất lượng",
     points: [
-      { main: "Cần website giới thiệu chuẩn mực", sub: "Tải nhanh, phân cấp dịch vụ rõ ràng." },
-      { main: "Đã có định hướng nội dung cơ bản", sub: "Logo, danh mục dịch vụ và thông tin pháp lý." },
-      { main: "Tôn trọng quy trình minh bạch", sub: "Chốt sitemap và layout UI trước khi code." },
-      { main: "Chi phí trọn gói rõ ràng", sub: "Biết chính xác phạm vi nghiệm thu từ ngày đầu." }
+      { main: "Cần website giới thiệu chuẩn mực" },
+      { main: "Đã có định hướng nội dung cơ bản" },
+      { main: "Tôn trọng quy trình minh bạch" },
+      { main: "Chi phí trọn gói rõ ràng" }
     ]
   },
   customQuote: {
     title: "HỆ THỐNG CẦN KHẢO SÁT & BÁO GIÁ RIÊNG:",
     subtitle: "Các nghiệp vụ chuyên sâu ngoài phạm vi 3 gói chuẩn:",
     points: [
-      { main: "Booking / Đặt lịch đa dịch vụ phức tạp", tag: "Custom Module" },
-      { main: "Sàn thương mại / Marketplace nhiều shop", tag: "Multi-vendor" },
-      { main: "Phần mềm quản trị nội bộ ERP / Kho vận", tag: "Enterprise" },
-      { main: "Cổng thành viên / Khóa học phân quyền", tag: "Membership" },
-      { main: "Cổng thanh toán ngân hàng trực tuyến", tag: "Payment Gateway" },
-      { main: "Hệ thống CRM chuyên sâu phễu khách", tag: "Advanced CRM" }
+      { main: "Booking / Đặt lịch đa dịch vụ phức tạp" },
+      { main: "Sàn thương mại / Marketplace nhiều shop" },
+      { main: "Phần mềm quản trị nội bộ ERP / Kho vận" },
+      { main: "Cổng thành viên / Khóa học phân quyền" },
+      { main: "Cổng thanh toán ngân hàng trực tuyến" },
+      { main: "Hệ thống CRM chuyên sâu phễu khách" }
     ]
   }
 };

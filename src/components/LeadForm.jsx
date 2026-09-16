@@ -21,6 +21,7 @@ import {
   Copy,
   Check
 } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function LeadForm({ selectedPackage, onSelectPackage }) {
   const [formData, setFormData] = useState({
@@ -168,62 +169,34 @@ export default function LeadForm({ selectedPackage, onSelectPackage }) {
   };
 
   return (
-    <section id="lead-form" className="py-3 sm:py-4 md:py-5 bg-slate-900 text-white relative overflow-hidden">
+    <section id="lead-form" className="py-6 sm:py-8 md:py-10 bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 relative overflow-hidden">
       {/* Ambient background glows */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-5 right-1/4 w-60 h-60 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Decorative Tech Network Sphere on Left (Framing the Mascot) */}
-      <div className="absolute -left-12 sm:-left-8 top-1/2 -translate-y-1/2 w-64 sm:w-80 md:w-96 opacity-40 pointer-events-none select-none z-0">
-        <img
-          src="/tech-network-bg.webp"
-          alt=""
-          className="w-full h-auto object-contain"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Decorative Tech Hexagon Matrix on Top-Right Corner of Section */}
-      <div className="absolute -top-4 -right-4 w-60 sm:w-80 md:w-96 opacity-35 pointer-events-none select-none z-0">
-        <img
-          src="/tech-hexagon-bg.webp"
-          alt=""
-          className="w-full h-auto object-contain"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Decorative Geometric Tech Pattern on Bottom-Left */}
-      <div className="absolute -bottom-10 left-10 w-44 sm:w-56 opacity-20 pointer-events-none select-none z-0">
-        <img
-          src="/tech-geometric-bg.webp"
-          alt=""
-          className="w-full h-auto object-contain"
-          loading="lazy"
-        />
-      </div>
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-5 right-1/4 w-60 h-60 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
 
-        {/* Section Header (Ultra Compact) */}
-        <div className="text-center max-w-xl mx-auto mb-2.5 sm:mb-3">
-          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-[10px] font-bold uppercase tracking-wider mb-0.5">
-            Nhận tư vấn & Báo giá
+        {/* Section Header */}
+        <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
+          <div className="text-center max-w-xl mx-auto mb-4 sm:mb-6">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-[#EC1420] text-xs font-bold uppercase tracking-wider mb-2 shadow-sm">
+              Nhận tư vấn & Báo giá
+            </div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
+              Gửi yêu cầu tư vấn gói website phù hợp
+            </h2>
+            <p className="mt-1.5 text-xs sm:text-sm text-slate-600">
+              Điền thông tin bên dưới, DUDI sẽ liên hệ tư vấn sitemap và bảng phạm vi chi tiết.
+            </p>
           </div>
-          <h2 className="text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-white">
-            Gửi yêu cầu tư vấn gói website phù hợp
-          </h2>
-          <p className="text-[11px] text-slate-400">
-            Điền thông tin bên dưới, DUDI sẽ liên hệ tư vấn sitemap và bảng phạm vi chi tiết.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* 2-Column Grid: Mascot on Left, Form on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
 
           {/* LEFT: Mascot Illustration */}
-          <div className="hidden lg:flex lg:col-span-4 flex-col items-center justify-center text-center order-2 lg:order-1">
-            <div className="relative group max-w-[160px] sm:max-w-[200px] lg:max-w-[230px] mx-auto">
+          <ScrollReveal direction="left" distance="35px" delay={100} duration={650} threshold={0.05} className="hidden lg:flex lg:col-span-4 flex-col items-center justify-center text-center order-2 lg:order-1">
+            <div className="relative group max-w-[192px] sm:max-w-[240px] lg:max-w-[276px] mx-auto">
               {/* Mascot background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-red-600/20 via-red-500/10 to-transparent rounded-full blur-xl pointer-events-none" />
 
@@ -235,10 +208,10 @@ export default function LeadForm({ selectedPackage, onSelectPackage }) {
                 loading="lazy"
               />
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* RIGHT: Compact Form Container */}
-          <div className="lg:col-span-8 order-1 lg:order-2 relative">
+          <ScrollReveal direction="up" distance="35px" delay={200} duration={650} threshold={0.05} className="lg:col-span-8 order-1 lg:order-2 relative">
 
             {/* Robot Head Mascot Peeking at Top-Right Corner */}
             <div className="absolute -top-4 right-2 sm:-top-7 sm:-right-2 md:-top-8 md:-right-3.5 w-10 sm:w-14 md:w-16 z-30 pointer-events-none drop-shadow-lg select-none">
@@ -642,7 +615,7 @@ export default function LeadForm({ selectedPackage, onSelectPackage }) {
               )}
 
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 
