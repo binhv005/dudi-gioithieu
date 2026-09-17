@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, MessageSquare, Menu, X, ChevronRight, User, Rocket } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Phone, MessageSquare, Menu, X, ChevronRight, ChevronDown, Rocket } from 'lucide-react';
 import { trackCtaClick, trackPhoneClick, trackZaloClick } from '../utils/tracking';
 
 export default function Header({ onSelectPackage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,8 +53,30 @@ export default function Header({ onSelectPackage }) {
     { name: 'Bảng giá', href: '#pricing', id: 'pricing' },
     { name: 'Case mẫu', href: '#cases', id: 'cases' },
     { name: 'Quy trình', href: '#process', id: 'process' },
-    { name: 'FAQ', href: '#faq', id: 'faq' },
   ];
+
+  const webSystemLinks = [
+    { name: 'Cập nhật', href: 'https://dudi-page.vercel.app/' },
+    { name: 'Đơn giá', href: 'https://dudi-dongia.vercel.app/' },
+    { name: 'Bán hàng', href: 'https://dudi-banhang.vercel.app/' },
+    { name: 'Dịch vụ', href: 'https://dudi-dichvu.vercel.app/' },
+    { name: 'SEO', href: 'https://dudisoftwareseo.vercel.app/' },
+    { name: 'Bảo trì', href: 'https://dudi-baotri.vercel.app/' },
+    { name: 'Tổng hợp', href: 'https://dudi-tonghop.vercel.app/' },
+  ];
+
+  const handleMouseEnterDropdown = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeaveDropdown = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 150);
+  };
 
   const handleCtaClick = (e) => {
     e.preventDefault();
@@ -76,8 +101,8 @@ export default function Header({ onSelectPackage }) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-2.5 text-slate-900'
-          : 'bg-white/60 backdrop-blur-xs py-3.5 text-slate-900 border-b border-slate-100/60'
+          ? 'bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-2 text-slate-900'
+          : 'bg-white/60 backdrop-blur-xs py-3 text-slate-900 border-b border-slate-100/60'
         }`}
     >
       {/* Dynamic Top Scroll Progress Transition Line */}
@@ -117,8 +142,8 @@ export default function Header({ onSelectPackage }) {
             </div>
           </a>
 
-          {/* Center: Desktop Navigation Links (Evenly distributed without capsule background) */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+          {/* Center: Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -139,6 +164,71 @@ export default function Header({ onSelectPackage }) {
                 </a>
               );
             })}
+
+            {/* Dropdown "Hệ thống web" đặt trước FAQ */}
+            <div
+              className="relative py-1"
+              onMouseEnter={handleMouseEnterDropdown}
+              onMouseLeave={handleMouseLeaveDropdown}
+            >
+              <button
+                type="button"
+                onClick={() => setIsDropdownOpen((prev) => !prev)}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 text-[13px] font-bold rounded-lg transition-all duration-200 cursor-pointer ${
+                  isDropdownOpen
+                    ? 'text-[#EC1420] bg-rose-50/80 shadow-xs'
+                    : 'text-slate-700 hover:text-[#EC1420] hover:bg-slate-50'
+                }`}
+                aria-haspopup="true"
+                aria-expanded={isDropdownOpen}
+              >
+                <span>Hệ thống web</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    isDropdownOpen ? 'rotate-180 text-[#EC1420]' : 'text-slate-400'
+                  }`}
+                />
+              </button>
+
+              {/* Hover bridge container & Dropdown menu */}
+              <div
+                className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-44 z-50 transition-all duration-200 ${
+                  isDropdownOpen
+                    ? 'opacity-100 visible translate-y-0 pointer-events-auto'
+                    : 'opacity-0 invisible -translate-y-1 pointer-events-none'
+                }`}
+              >
+                <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden divide-y divide-slate-100 py-1">
+                  {webSystemLinks.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2.5 text-xs font-bold text-slate-800 hover:text-[#EC1420] hover:bg-rose-50/60 transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ link sau Dropdown */}
+            <a
+              href="#faq"
+              onClick={(e) => handleNavClick(e, '#faq')}
+              className={`relative py-1 text-[13px] font-bold transition-all duration-200 cursor-pointer ${
+                activeSection === 'faq'
+                  ? 'text-[#EC1420]'
+                  : 'text-slate-700 hover:text-[#EC1420]'
+              }`}
+            >
+              <span>FAQ</span>
+              {activeSection === 'faq' && (
+                <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#EC1420] rounded-full animate-in fade-in zoom-in-75 duration-200" />
+              )}
+            </a>
           </nav>
 
           {/* Right: Action Buttons & Hotline */}
@@ -190,7 +280,7 @@ export default function Header({ onSelectPackage }) {
 
       {/* Mobile Drawer Menu (Light Theme) */}
       {isMobileMenuOpen && (
-        <div className="sm:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-2xl animate-in slide-in-from-top-2 duration-200 text-slate-900">
+        <div className="sm:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-2xl animate-in slide-in-from-top-2 duration-200 text-slate-900 max-h-[85vh] overflow-y-auto">
           <div className="grid grid-cols-1 gap-1">
             {navLinks.map((link) => (
               <a
@@ -203,6 +293,48 @@ export default function Header({ onSelectPackage }) {
                 <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
               </a>
             ))}
+
+            {/* Mobile "Hệ thống web" Accordion trước FAQ */}
+            <div className="border border-slate-100 rounded-lg overflow-hidden my-1">
+              <button
+                type="button"
+                onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
+                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-700 hover:text-[#EC1420] bg-slate-50/70 transition-colors"
+              >
+                <span>Hệ thống web</span>
+                <ChevronDown
+                  className={`w-3.5 h-3.5 text-slate-500 transition-transform duration-200 ${
+                    isMobileDropdownOpen ? 'rotate-180 text-[#EC1420]' : ''
+                  }`}
+                />
+              </button>
+              {isMobileDropdownOpen && (
+                <div className="bg-white divide-y divide-slate-100 px-2 py-1">
+                  {webSystemLinks.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between px-3 py-2 text-xs font-semibold text-slate-700 hover:text-[#EC1420] hover:bg-rose-50/40 rounded transition-colors"
+                    >
+                      <span>{item.name}</span>
+                      <span className="text-[10px] text-slate-400 font-normal">↗</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile FAQ */}
+            <a
+              href="#faq"
+              onClick={(e) => handleNavClick(e, '#faq')}
+              className="flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-700 hover:text-[#EC1420] hover:bg-slate-50 rounded-lg transition-colors"
+            >
+              <span>FAQ</span>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            </a>
           </div>
 
           <div className="pt-2 border-t border-slate-100 flex flex-col gap-2">
