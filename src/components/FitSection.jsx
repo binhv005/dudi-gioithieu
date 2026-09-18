@@ -52,11 +52,11 @@ export default function FitSection({ onSelectPackage }) {
         />
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
 
         {/* Section Header */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
-          <div className="text-center max-w-xl mx-auto mb-2 sm:mb-2.5">
+          <div className="text-center max-w-2xl mx-auto mb-2 sm:mb-2.5">
             <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/15 border border-white/30 text-white text-[9.5px] font-extrabold uppercase tracking-wider mb-0.5 shadow-sm backdrop-blur-xs">
               Bộ lọc phù hợp
             </div>
@@ -70,7 +70,7 @@ export default function FitSection({ onSelectPackage }) {
         </ScrollReveal>
 
         {/* 2-Column Bento Comparison Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2.5 sm:gap-3.5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 xl:gap-5">
 
           {/* Column 1: Fit Perfectly */}
           <ScrollReveal direction="left" distance="35px" delay={100} duration={650} threshold={0.05} className="h-full flex flex-col">

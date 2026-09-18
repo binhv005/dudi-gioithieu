@@ -29,7 +29,7 @@ export const AUDIENCES = [
     headline: "Showcase năng lực và dự án theo ngành",
     suggestedPackage: "Cao cấp",
     packageId: "premium",
-    image: "/cases/audience-branding.jpg",
+    image: "/cases/audience-branding.webp",
     tags: ["UI May Đo", "Showcase Dự Án", "Chuẩn B2B"],
     metric: "Thiết Kế Riêng"
   },
@@ -40,7 +40,7 @@ export const AUDIENCES = [
     headline: "Phễu form đa tầng, gắn nguồn chiến dịch",
     suggestedPackage: "Cao cấp",
     packageId: "premium",
-    image: "/cases/audience-leadgen.jpg",
+    image: "/cases/audience-leadgen.webp",
     tags: ["Tracking UTM", "Form Đa Trường", "Chống Spam"],
     metric: "Tối Đa Lead"
   }

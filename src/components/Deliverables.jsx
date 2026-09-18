@@ -109,19 +109,19 @@ export default function Deliverables() {
         }
       `}} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
 
         {/* Section Header */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
-          <div className="text-center max-w-2xl mx-auto mb-8">
+          <div className="text-center max-w-3xl mx-auto mb-8">
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-brand-surface border border-red-200/80 text-brand-primary text-[11px] font-bold uppercase tracking-wider mb-2">
               <Sparkles className="w-3 h-3 text-red-500" />
               <span>Đầu ra sản phẩm</span>
             </div>
-            <h2 className="text-2xl sm:text-[28px] font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-[28px] lg:text-3xl 2xl:text-4xl font-extrabold text-slate-900 tracking-tight">
               Những hạng mục thực tế khách hàng nhận được
             </h2>
-            <p className="mt-1 text-xs sm:text-[13px] text-slate-600">
+            <p className="mt-1 text-xs sm:text-[13px] 2xl:text-base text-slate-600">
               Trực quan hóa chuẩn kỹ thuật và các module hoàn thiện bàn giao khi nghiệm thu.
             </p>
           </div>
@@ -144,7 +144,7 @@ export default function Deliverables() {
             {marqueeCards.map((item, index) => (
               <div
                 key={`${item.id}-${index}`}
-                className="w-[280px] sm:w-[320px] lg:w-[340px] shrink-0 rounded-2xl bg-white p-4 sm:p-5 border border-slate-200/80 shadow-xs hover:shadow-xl hover:border-red-300/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group select-none"
+                className="w-[280px] sm:w-[320px] lg:w-[350px] 2xl:w-[400px] shrink-0 rounded-2xl bg-white p-4 sm:p-5 2xl:p-6 border border-slate-200/80 shadow-xs hover:shadow-xl hover:border-red-300/80 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between cursor-pointer group select-none"
               >
                 <div>
                   {/* Tag and Top Icon */}

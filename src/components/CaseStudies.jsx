@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { REAL_PROJECTS } from '../data/cases';
-import { Globe, ExternalLink, Check, ArrowRight, Layers, Sparkles } from 'lucide-react';
+import { Globe, ExternalLink, Check, ArrowRight, Layers, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { trackCtaClick } from '../utils/tracking';
 import ScrollReveal from './ScrollReveal';
 
 export default function CaseStudies() {
   const [activeProjectIdx, setActiveProjectIdx] = useState(0);
   const project = REAL_PROJECTS[activeProjectIdx];
+
+  const handlePrev = () => {
+    setActiveProjectIdx((prev) => (prev - 1 + REAL_PROJECTS.length) % REAL_PROJECTS.length);
+  };
+
+  const handleNext = () => {
+    setActiveProjectIdx((prev) => (prev + 1) % REAL_PROJECTS.length);
+  };
 
   return (
     <section id="cases" className="relative py-6 sm:py-8 bg-gradient-to-r from-[#8B0B12] via-[#B91C1C] to-[#DC2626] text-white overflow-hidden">
@@ -20,7 +28,7 @@ export default function CaseStudies() {
         }}
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
 
         {/* Section Header */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
@@ -35,32 +43,35 @@ export default function CaseStudies() {
               </h2>
             </div>
 
-            {/* Project Switcher Segmented Control Bar */}
-            <div className="inline-flex items-center p-1 rounded-xl bg-black/40 border border-white/20 backdrop-blur-md shadow-lg self-start sm:self-auto">
-              {REAL_PROJECTS.map((p, idx) => {
-                const isActive = activeProjectIdx === idx;
-                return (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => setActiveProjectIdx(idx)}
-                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer ${isActive
-                        ? 'bg-white text-slate-950 shadow-md scale-[1.02]'
-                        : 'text-white/80 hover:text-white hover:bg-white/10'
-                      }`}
-                    aria-pressed={isActive}
-                  >
-                    <span className={`w-2 h-2 rounded-full ${isActive ? 'bg-[#EC1420]' : 'bg-white/40'}`} />
-                    <span>{p.projectNumber}: {p.shortName}</span>
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${isActive
-                        ? 'bg-red-100 text-red-700'
-                        : 'bg-white/15 text-white/90'
-                      }`}>
-                      {p.price.split(' ')[0]}tr
-                    </span>
-                  </button>
-                );
-              })}
+            {/* Project Switcher: Prev Button - Active Pill - Next Button */}
+            <div className="flex items-center gap-1.5 sm:gap-2.5 self-start sm:self-auto select-none max-w-full">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Dự án trước"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 shadow-md cursor-pointer shrink-0"
+              >
+                <ChevronLeft className="w-4 h-4 text-white" />
+              </button>
+
+              <div className="flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white text-slate-900 shadow-md min-w-0">
+                <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#EC1420] shrink-0" />
+                <span className="text-[11px] sm:text-xs md:text-sm font-black text-[#0F172A] tracking-tight truncate">
+                  {project.projectNumber}: {project.shortName}
+                </span>
+                <span className="text-[10px] sm:text-xs font-black px-1.5 sm:px-2 py-0.5 rounded-full bg-red-50 text-[#EC1420] border border-red-100/80 shrink-0">
+                  {project.price.split(' ')[0]}tr
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Dự án tiếp theo"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95 shadow-md cursor-pointer shrink-0"
+              >
+                <ChevronRight className="w-4 h-4 text-white" />
+              </button>
             </div>
           </div>
         </ScrollReveal>
@@ -215,20 +226,20 @@ export default function CaseStudies() {
 
         {/* Ecosystem Bottom Footer Strip */}
         <ScrollReveal direction="up" distance="20px" delay={250} duration={600} threshold={0.05}>
-          <div className="mt-3 pt-2 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-red-100">
-            <div className="flex items-center gap-1.5 text-center sm:text-left">
-              <Globe className="w-3.5 h-3.5 text-white shrink-0" />
-              <span>Khám phá thêm các dự án tiêu biểu tại hệ sinh thái DUDI.</span>
+          <div className="mt-4 pt-3 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-red-100">
+            <div className="flex items-center gap-2 text-center sm:text-left">
+              <Globe className="w-4 h-4 text-white shrink-0" />
+              <span>Khám phá thêm các sản phẩm & dự án tiêu biểu tại hệ sinh thái DUDI.</span>
             </div>
             <a
               href="https://dudisoftware.com/projects"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackCtaClick('cases_footer_link', 'dudisoftware.com/projects', 'https://dudisoftware.com/projects')}
-              className="underline hover:text-white font-bold inline-flex items-center gap-1 transition-colors shrink-0"
+              onClick={() => trackCtaClick('cases_footer_link', 'Xem tất cả dự án', 'https://dudisoftware.com/projects')}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-black/30 hover:bg-white text-white hover:text-slate-950 border border-white/20 hover:border-white font-bold text-xs shadow-md transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer shrink-0"
             >
-              <span>Xem tất cả dự án tại dudisoftware.com/projects</span>
-              <ExternalLink className="w-3 h-3" />
+              <span>Xem tất cả dự án</span>
+              <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </ScrollReveal>

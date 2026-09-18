@@ -59,7 +59,7 @@ export default function FloatingContactWidgets() {
   return (
     <aside
       aria-label="Liên hệ nhanh và điều hướng"
-      className="fixed bottom-6 right-5 sm:right-6 z-50 flex flex-col gap-3.5 items-end pointer-events-none"
+      className="fixed bottom-4 right-3.5 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2.5 sm:gap-3.5 items-end pointer-events-none"
     >
       {/* Scroll To Top Button */}
       {showScrollTop && (
@@ -79,11 +79,11 @@ export default function FloatingContactWidgets() {
             onMouseLeave={() => setHovered(null)}
             onFocus={() => setHovered('scrolltop')}
             onBlur={() => setHovered(null)}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/90 hover:bg-[#EC1420] text-white border border-white/20 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400"
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/90 hover:bg-[#EC1420] text-white border border-white/20 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400"
             title="Lên đầu trang"
             aria-label="Cuộn lên đầu trang"
           >
-            <ChevronUp className="w-5 h-5 text-slate-200 group-hover:text-white group-hover:-translate-y-0.5 transition-all duration-200" />
+            <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200 group-hover:text-white group-hover:-translate-y-0.5 transition-all duration-200" />
           </button>
         </div>
       )}
@@ -115,7 +115,7 @@ export default function FloatingContactWidgets() {
           onMouseLeave={() => setHovered(null)}
           onFocus={() => setHovered('hotline')}
           onBlur={() => setHovered(null)}
-          className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-[#D60F1A] via-[#EC1420] to-[#FF3B47] text-white flex items-center justify-center shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400 group cursor-pointer"
+          className="relative w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-gradient-to-tr from-[#D60F1A] via-[#EC1420] to-[#FF3B47] text-white flex items-center justify-center shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400 group cursor-pointer"
           title="Hotline: 0909 163 821 (Desktop: Sao chép | Mobile: Gọi trực tiếp)"
           aria-label="Hotline 0909 163 821"
         >
@@ -143,12 +143,12 @@ export default function FloatingContactWidgets() {
           onMouseLeave={() => setHovered(null)}
           onFocus={() => setHovered('zalo')}
           onBlur={() => setHovered(null)}
-          className="relative w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#0068FF] hover:bg-[#0057D9] text-white flex items-center justify-center shadow-lg shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400 group cursor-pointer"
+          className="relative w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-[#0068FF] hover:bg-[#0057D9] text-white flex items-center justify-center shadow-lg shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-400 group cursor-pointer"
           title="Chat Zalo: 0909 163 821"
           aria-label="Chat Zalo DUDI Software"
         >
           {/* Official Zalo Text Branding */}
-          <span className="font-black text-[13px] sm:text-[14px] tracking-tight text-white select-none group-hover:scale-105 transition-transform">
+          <span className="font-black text-xs sm:text-[14px] tracking-tight text-white select-none group-hover:scale-105 transition-transform">
             Zalo
           </span>
         </a>

@@ -47,26 +47,26 @@ export default function Audience({ onSelectPackage }) {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
 
         {/* Section Header */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
-          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+          <div className="text-center max-w-3xl mx-auto mb-7 sm:mb-8">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-white/80 text-[#e0312b] text-[11px] font-black uppercase tracking-wider mb-2 shadow-sm backdrop-blur-md">
               <Sparkles className="w-3 h-3 text-[#EC1420]" />
               <span>Đối tượng phù hợp</span>
             </div>
-            <h2 className="text-2xl sm:text-[28px] font-black text-slate-900 tracking-tight drop-shadow-2xs">
+            <h2 className="text-2xl sm:text-[28px] lg:text-3xl 2xl:text-4xl font-black text-slate-900 tracking-tight drop-shadow-2xs">
               Giải pháp thiết kế website cho từng giai đoạn
             </h2>
-            <p className="mt-1 text-xs sm:text-sm text-slate-800/90 font-medium">
+            <p className="mt-1 text-xs sm:text-sm 2xl:text-base text-slate-800/90 font-medium">
               Tối ưu hóa đúng nhu cầu thực tế và mục tiêu tăng trưởng của doanh nghiệp.
             </p>
           </div>
         </ScrollReveal>
 
         {/* Balanced 4-Column Grid with Staggered ScrollReveal */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-4.5 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 2xl:gap-7 items-stretch">
           {AUDIENCES.map((item, idx) => {
             const isFeatured = item.recommended;
             return (
@@ -94,7 +94,7 @@ export default function Audience({ onSelectPackage }) {
                   )}
 
                   {/* Top Half: Full-width Edge-to-Edge Image */}
-                  <div className="relative w-full h-36 sm:h-40 bg-slate-900 overflow-hidden shrink-0">
+                  <div className="relative w-full h-36 sm:h-40 2xl:h-52 bg-slate-900 overflow-hidden shrink-0">
                     <img
                       src={item.image}
                       alt={item.title}

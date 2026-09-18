@@ -35,12 +35,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-brand-primary selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col antialiased selection:bg-brand-primary selection:text-white overflow-x-hidden w-full max-w-[100vw]">
       {/* S01: Header */}
       <Header onSelectPackage={handleSelectPackage} />
 
       {/* Main Content Area */}
-      <main className="flex-1">
+      <main className="flex-1 overflow-x-hidden w-full">
         {/* S02: Hero */}
         <Hero onSelectPackage={handleSelectPackage} />
 

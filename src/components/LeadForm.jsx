@@ -174,29 +174,29 @@ export default function LeadForm({ selectedPackage, onSelectPackage }) {
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-80 h-80 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-5 right-1/4 w-60 h-60 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
 
         {/* Section Header */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
-          <div className="text-center max-w-xl mx-auto mb-4 sm:mb-6">
+          <div className="text-center max-w-2xl xl:max-w-3xl mx-auto mb-4 sm:mb-6">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-[#EC1420] text-xs font-bold uppercase tracking-wider mb-2 shadow-sm">
               Nhận tư vấn & Báo giá
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl font-extrabold tracking-tight text-slate-900">
               Gửi yêu cầu tư vấn gói website phù hợp
             </h2>
-            <p className="mt-1.5 text-xs sm:text-sm text-slate-600">
+            <p className="mt-1.5 text-xs sm:text-sm 2xl:text-base text-slate-600">
               Điền thông tin bên dưới, DUDI sẽ liên hệ tư vấn sitemap và bảng phạm vi chi tiết.
             </p>
           </div>
         </ScrollReveal>
 
         {/* 2-Column Grid: Mascot on Left, Form on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
 
           {/* LEFT: Mascot Illustration */}
           <ScrollReveal direction="left" distance="35px" delay={100} duration={650} threshold={0.05} className="hidden lg:flex lg:col-span-4 flex-col items-center justify-center text-center order-2 lg:order-1">
-            <div className="relative group max-w-[192px] sm:max-w-[240px] lg:max-w-[276px] mx-auto">
+            <div className="relative group max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] 2xl:max-w-[360px] mx-auto">
               {/* Mascot background glow effect */}
               <div className="absolute inset-0 bg-gradient-to-t from-red-600/20 via-red-500/10 to-transparent rounded-full blur-xl pointer-events-none" />
 

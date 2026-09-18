@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, MessageSquare, ShieldCheck, FileCheck, ArrowUp } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageSquare, ShieldCheck, FileCheck, ArrowUp, Globe, ExternalLink } from 'lucide-react';
 import { trackPhoneClick, trackZaloClick } from '../utils/tracking';
 
 export default function Footer() {
@@ -9,22 +9,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-12">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           
           {/* Col 1: Legal Entity Info (Zero-Tolerance Exactness) */}
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center gap-2.5">
-              <img
-                src="/logo.webp"
-                alt="Công ty TNHH Giải Pháp Phần Mềm DUDI"
-                width="36"
-                height="36"
-                loading="lazy"
-                className="w-9 h-9 rounded-xl object-contain shadow-xs"
-              />
-              <span className="text-base font-extrabold text-white tracking-tight">
-                DUDI<span className="text-brand-primary"> Software</span>
+              <span className="text-lg font-black text-white tracking-tight">
+                DUDI<span className="text-[#EC1420] font-black"> SOFTWARE</span>
               </span>
             </div>
 
@@ -58,21 +50,21 @@ export default function Footer() {
             <div className="space-y-2.5 text-xs">
               <a
                 href="tel:0909163821"
-                onClick={() => trackPhoneClick('footer')}
-                className="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors group"
+                onClick={() => trackPhoneClick('footer_phone')}
+                className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
               >
-                <div className="w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-primary transition-colors">
-                  <Phone className="w-3.5 h-3.5 text-brand-primary" />
+                <div className="w-6 h-6 rounded-md bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-brand-primary group-hover:border-brand-primary/50 transition-colors">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
-                <span>Hotline: <strong>0909 163 821</strong></span>
+                <span>Hotline: 0909 163 821</span>
               </a>
 
               <a
                 href="mailto:contact@dudisoftware.com"
-                className="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors group"
+                className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
               >
-                <div className="w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-primary transition-colors">
-                  <Mail className="w-3.5 h-3.5 text-brand-primary" />
+                <div className="w-6 h-6 rounded-md bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-brand-primary group-hover:border-brand-primary/50 transition-colors">
+                  <Mail className="w-3.5 h-3.5" />
                 </div>
                 <span>contact@dudisoftware.com</span>
               </a>
@@ -81,10 +73,10 @@ export default function Footer() {
                 href="https://zalo.me/0909163821"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackZaloClick('footer')}
-                className="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors group"
+                onClick={() => trackZaloClick('footer_zalo')}
+                className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors group"
               >
-                <div className="w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-primary transition-colors">
+                <div className="w-6 h-6 rounded-md bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 group-hover:text-brand-primary group-hover:border-brand-primary/50 transition-colors">
                   <MessageSquare className="w-3.5 h-3.5 text-brand-primary" />
                 </div>
                 <span>Zalo OA: 0909 163 821</span>
@@ -119,14 +111,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <div className="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            Copyright © 2026 DUDI Software. All rights reserved.
+            © 2024 CÔNG TY TNHH GIẢI PHÁP PHẦN MỀM DUDI. All rights reserved.
           </div>
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Thông tin đăng ký kinh doanh chính thức</span>
-          </div>
+          <a
+            href="https://dudisoftware.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-semibold transition-all duration-200 shadow-xs cursor-pointer"
+          >
+            <Globe className="w-3.5 h-3.5 text-[#EC1420]" />
+            <span>dudisoftware.com</span>
+            <ExternalLink className="w-3 h-3 text-slate-400" />
+          </a>
         </div>
       </div>
     </footer>

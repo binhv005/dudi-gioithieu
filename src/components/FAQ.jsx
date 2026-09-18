@@ -15,7 +15,7 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="py-6 sm:py-8 md:py-10 bg-white border-t border-slate-200/60">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
 
         {/* 2-Column Layout: Left Header & 3D Illustration, Right Accordions */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
@@ -23,19 +23,19 @@ export default function FAQ() {
           {/* LEFT COLUMN: Header & 3D FAQ Mascot Illustration */}
           <ScrollReveal direction="left" distance="35px" duration={650} threshold={0.05} className="lg:col-span-5 lg:sticky lg:top-20 space-y-4">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200/80 text-[#EC1420] text-[10px] font-bold uppercase tracking-wider mb-1.5">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200/80 text-[#EC1420] text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1.5">
                 Câu hỏi thường gặp
               </div>
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-2xl 2xl:text-3xl font-black text-slate-900 tracking-tight">
                 Giải đáp thắc mắc dịch vụ
               </h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs 2xl:text-sm text-slate-500 mt-1">
                 Các câu hỏi phổ biến nhất về quy trình, quyền sở hữu và chi phí thiết kế website tại DUDI.
               </p>
             </div>
 
             {/* 3D Mascot Illustration Box */}
-            <div className="hidden lg:block relative max-w-[460px] lg:max-w-[490px] xl:max-w-[530px] w-full mx-auto lg:mx-0 group pt-2">
+            <div className="hidden lg:block relative max-w-[460px] lg:max-w-[490px] xl:max-w-[530px] 2xl:max-w-[620px] w-full mx-auto lg:mx-0 group pt-2">
               <img
                 src="/faq-mascot-illustration.webp"
                 alt="DUDI Software FAQ Mascot"

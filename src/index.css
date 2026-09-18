@@ -6,6 +6,19 @@
   html {
     font-family: 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
+    /* Fluid root typography: Scales gracefully from mobile 360px up to 4K / 50% Zoom (3840px) */
+    font-size: clamp(15px, 0.35vw + 12.5px, 20px);
+  }
+
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Responsive media defaults */
+  img, svg, video, canvas, audio, iframe, embed, object {
+    max-width: 100%;
   }
 
   /* Ensure all sections have proper scroll margin for sticky header */

@@ -116,25 +116,25 @@ export default function Pricing({ onSelectPackage }) {
 
   return (
     <section id="pricing" className="py-4 sm:py-5 md:py-6 bg-slate-50/70 border-t border-slate-200/60">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
 
         {/* Section Header */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
-          <div className="text-center max-w-xl mx-auto mb-3 sm:mb-4">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-surface border border-red-200/80 text-brand-primary text-[10px] font-bold uppercase tracking-wider mb-0.5">
+          <div className="text-center max-w-xl xl:max-w-2xl 2xl:max-w-3xl mx-auto mb-3 sm:mb-4">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-brand-surface border border-red-200/80 text-brand-primary text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-0.5">
               Bảng giá & Phạm vi
             </div>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl 2xl:text-3xl font-black text-slate-900 tracking-tight">
               Bảng giá minh bạch — Đúng cam kết, không phí ẩn
             </h2>
-            <p className="text-[11px] text-slate-500">
+            <p className="text-[11px] sm:text-xs 2xl:text-sm text-slate-500">
               Thanh toán một lần theo dự án, không phát sinh chi phí trong phạm vi thống nhất.
             </p>
           </div>
         </ScrollReveal>
 
         {/* 3 Pricing Cards: Styled with Staggered ScrollReveal */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 lg:gap-4 items-center max-w-5xl mx-auto mb-3 pt-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 lg:gap-4.5 xl:gap-6 2xl:gap-8 items-center max-w-6xl xl:max-w-7xl 2xl:max-w-[1500px] mx-auto mb-3 pt-2">
           {PACKAGES.map((pkg, idx) => {
             const isStandard = pkg.recommended;
             const theme = cardThemes[pkg.id] || cardThemes.basic;

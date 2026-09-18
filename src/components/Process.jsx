@@ -30,11 +30,11 @@ export default function Process() {
 
   return (
     <section id="process" className="py-6 sm:py-8 lg:py-9 bg-white border-t border-slate-200/70 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 relative z-10">
 
         {/* Section Header - Compact */}
         <ScrollReveal direction="up" distance="30px" duration={600} threshold={0.05}>
-          <div className="text-center max-w-xl mx-auto mb-5 sm:mb-6">
+          <div className="text-center max-w-2xl xl:max-w-3xl mx-auto mb-5 sm:mb-6">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100/90 border border-amber-300/70 text-amber-950 text-[10px] font-bold uppercase tracking-wider mb-1.5 shadow-xs">
               <Sparkles className="w-3 h-3 text-amber-700" />
               <span>Quy trình 6 bước</span>
@@ -132,7 +132,7 @@ export default function Process() {
 
         {/* Dynamic Detail Card for the Selected/Active Step - Full Red Theme */}
         <ScrollReveal direction="up" delay={180} duration={500} threshold={0.1} once={true}>
-          <div className="max-w-2xl mx-auto rounded-2xl bg-gradient-to-r from-[#8B0B12] via-[#B91C1C] to-[#DC2626] text-white p-4 sm:p-5 border border-white/20 shadow-xl shadow-red-950/25 transition-all duration-300">
+          <div className="max-w-4xl xl:max-w-5xl 2xl:max-w-6xl mx-auto rounded-2xl bg-gradient-to-r from-[#8B0B12] via-[#B91C1C] to-[#DC2626] text-white p-4 sm:p-5 2xl:p-7 border border-white/20 shadow-xl shadow-red-950/25 transition-all duration-300">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2.5 mb-3 border-b border-white/15">
               <div className="flex items-center gap-2.5">
                 <span className="w-7 h-7 rounded-full bg-white text-[#8B0B12] font-mono font-black text-[11px] flex items-center justify-center shadow-xs">
