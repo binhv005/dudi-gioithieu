@@ -27,7 +27,6 @@ export default function FloatingContactWidgets() {
   const handlePhoneClick = (e) => {
     trackPhoneClick('floating_widget');
 
-    // Check if device is desktop vs mobile
     const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
       window.innerWidth < 768;
@@ -69,35 +68,7 @@ export default function FloatingContactWidgets() {
         aria-label="Liên hệ nhanh và điều hướng"
         className="fixed bottom-4 right-3.5 sm:bottom-6 sm:right-6 z-40 flex flex-col gap-2.5 sm:gap-3.5 items-end pointer-events-none"
       >
-        {/* 1. Scroll To Top Button */}
-        {showScrollTop && (
-          <div className="relative flex items-center pointer-events-auto animate-in fade-in slide-in-from-bottom-3 duration-300">
-            {/* Tooltip */}
-            <span
-              className={`hidden md:block absolute right-full mr-3 px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-md text-white text-xs font-bold whitespace-nowrap shadow-lg border border-slate-700/60 transition-all duration-200 pointer-events-none ${
-                hovered === 'scrolltop' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
-              }`}
-            >
-              Lên đầu trang
-            </span>
-
-            <button
-              type="button"
-              onClick={scrollToTop}
-              onMouseEnter={() => setHovered('scrolltop')}
-              onMouseLeave={() => setHovered(null)}
-              onFocus={() => setHovered('scrolltop')}
-              onBlur={() => setHovered(null)}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/90 hover:bg-[#EC1420] text-white border border-white/20 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400"
-              title="Lên đầu trang"
-              aria-label="Cuộn lên đầu trang"
-            >
-              <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200 group-hover:text-white group-hover:-translate-y-0.5 transition-all duration-200" />
-            </button>
-          </div>
-        )}
-
-        {/* 2. Floating AI Mascot Button */}
+        {/* 1. Floating AI Mascot Button (Ở TRÊN CÙNG NHẤT) */}
         <div className="relative flex items-center pointer-events-auto">
           {/* Ripple Waves */}
           <div 
@@ -145,6 +116,34 @@ export default function FloatingContactWidgets() {
             <span className="absolute top-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full animate-pulse" />
           </button>
         </div>
+
+        {/* 2. Scroll To Top Button */}
+        {showScrollTop && (
+          <div className="relative flex items-center pointer-events-auto animate-in fade-in slide-in-from-bottom-3 duration-300">
+            {/* Tooltip */}
+            <span
+              className={`hidden md:block absolute right-full mr-3 px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-md text-white text-xs font-bold whitespace-nowrap shadow-lg border border-slate-700/60 transition-all duration-200 pointer-events-none ${
+                hovered === 'scrolltop' ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-2'
+              }`}
+            >
+              Lên đầu trang
+            </span>
+
+            <button
+              type="button"
+              onClick={scrollToTop}
+              onMouseEnter={() => setHovered('scrolltop')}
+              onMouseLeave={() => setHovered(null)}
+              onFocus={() => setHovered('scrolltop')}
+              onBlur={() => setHovered(null)}
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/90 hover:bg-[#EC1420] text-white border border-white/20 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-red-400"
+              title="Lên đầu trang"
+              aria-label="Cuộn lên đầu trang"
+            >
+              <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-200 group-hover:text-white group-hover:-translate-y-0.5 transition-all duration-200" />
+            </button>
+          </div>
+        )}
 
         {/* 3. Hotline Widget */}
         <div className="relative flex items-center pointer-events-auto">
