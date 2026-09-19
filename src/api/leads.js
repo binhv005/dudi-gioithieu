@@ -1,13 +1,10 @@
-// Backend simulation / Client-side mock for POST /api/leads endpoint
-// Đảm bảo đầy đủ: Validation, Sanitization, Honeypot, Rate limiting, Duplicate check, Metadata payload
-
+// Backend simulation / Client-side service for POST /api/leads endpoint
 import { validateLeadForm, sanitizeText } from '../utils/validation';
 
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
-const RATE_LIMIT_MAX_REQUESTS = 5;
-const DUPLICATE_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 10;
+const DUPLICATE_WINDOW_MS = 1 * 60 * 1000;
 
-// In-memory / LocalStorage cache for rate-limiting & duplicate checking
 function getLeadHistory() {
   try {
     const raw = localStorage.getItem('dudi_lead_history');
@@ -26,15 +23,12 @@ function saveLeadHistory(history) {
 }
 
 export async function submitLeadApi(formData) {
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 800));
-
   // 1. Honeypot check
   if (formData.website_company_fax && formData.website_company_fax.trim() !== '') {
     return {
       success: false,
       status: 400,
-      message: "Yêu cầu bị từ chối do vi phạm quy chuẩn bảo mật bot."
+      message: 'Yêu cầu bị từ chối do vi phạm tiêu chuẩn bot.'
     };
   }
 
@@ -45,24 +39,14 @@ export async function submitLeadApi(formData) {
       success: false,
       status: 422,
       errors: validation.errors,
-      message: "Dữ liệu nhập vào chưa hợp lệ. Vui lòng kiểm tra lại các trường được đánh dấu đỏ."
+      message: 'Dữ liệu nhập vào chưa hợp lệ. Vui lòng kiểm tra lại các trường.'
     };
   }
 
   const now = Date.now();
   const history = getLeadHistory();
 
-  // 3. Rate limiting check (max 5 requests / 10 mins)
-  const recentRequests = history.filter((item) => now - item.timestamp < RATE_LIMIT_WINDOW_MS);
-  if (recentRequests.length >= RATE_LIMIT_MAX_REQUESTS) {
-    return {
-      success: false,
-      status: 429,
-      message: "Bạn đã gửi quá nhiều yêu cầu trong thời gian ngắn. Vui lòng thử lại sau 10 phút hoặc gọi trực tiếp Hotline 0909 163 821."
-    };
-  }
-
-  // 4. Duplicate prevention (same phone and description within 5 mins)
+  // 3. Duplicate prevention (1 min)
   const isDuplicate = history.some(
     (item) =>
       item.phone === formData.phone &&
@@ -74,44 +58,43 @@ export async function submitLeadApi(formData) {
     return {
       success: false,
       status: 409,
-      message: "Hệ thống đã nhận yêu cầu tương tự của bạn trước đó ít phút. Chuyên viên DUDI đang chuẩn bị liên hệ lại với bạn ngay."
+      message: 'Hệ thống đã nhận yêu cầu tương tự của bạn. DUDI đang chuẩn bị liên hệ lại với bạn ngay.'
     };
   }
 
-  // 5. Parse UTM & URL metadata
+  // 4. Metadata
   const urlParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
-  const utm_source = urlParams.get('utm_source') || 'direct';
-  const utm_medium = urlParams.get('utm_medium') || 'none';
-  const utm_campaign = urlParams.get('utm_campaign') || 'none';
-  const utm_content = urlParams.get('utm_content') || 'none';
   const referrer = typeof document !== 'undefined' ? document.referrer || 'direct' : 'direct';
   const landingUrl = typeof window !== 'undefined' ? window.location.href : 'https://dudisoftware.com';
 
-  // 6. Generate random Unique Lead ID (UUID style or DUDI-XXXXX)
+  // 5. Generate unique Lead ID
   const randomSuffix = Math.floor(100000 + Math.random() * 900000);
-  const lead_id = `DUDI-${new Date().getFullYear()}-${randomSuffix}`;
+  const lead_id = 'DUDI-' + randomSuffix;
 
-  // 7. Assemble Clean Sanitized Lead Payload
+  // 6. Clean sanitized payload
+  const fullName = sanitizeText(formData.fullName || 'Khách hàng');
+  const phone = sanitizeText(formData.phone || '');
+  const companyName = sanitizeText(formData.companyName || 'Khách cá nhân');
+  const industry = sanitizeText(formData.industry || 'Chưa chọn');
+  const packageId = sanitizeText(formData.packageId || 'Website Doanh Nghiệp');
+  const pageCount = sanitizeText(formData.pageCount || 'Tiêu chuẩn');
+  const features = Array.isArray(formData.features) ? formData.features.map(sanitizeText).join(', ') : '';
+  const description = sanitizeText(formData.description || 'Yêu cầu tư vấn website doanh nghiệp');
+  const createdAt = new Date().toISOString();
+
   const sanitizedLead = {
     lead_id,
-    createdAt: new Date().toISOString(),
-    fullName: sanitizeText(formData.fullName),
-    phone: sanitizeText(formData.phone),
-    companyName: sanitizeText(formData.companyName),
-    industry: sanitizeText(formData.industry),
-    packageId: sanitizeText(formData.packageId),
-    pageCount: sanitizeText(formData.pageCount || 'Chưa rõ'),
-    features: Array.isArray(formData.features) ? formData.features.map(sanitizeText) : [],
-    referenceUrl: sanitizeText(formData.referenceUrl || ''),
-    description: sanitizeText(formData.description),
+    createdAt,
+    fullName,
+    phone,
+    companyName,
+    industry,
+    packageId,
+    pageCount,
+    features,
+    description,
     landingUrl,
-    referrer,
-    utm: {
-      source: utm_source,
-      medium: utm_medium,
-      campaign: utm_campaign,
-      content: utm_content
-    }
+    referrer
   };
 
   // Record into history
@@ -123,34 +106,69 @@ export async function submitLeadApi(formData) {
   });
   saveLeadHistory(history);
 
-  // Store lead in client storage for review
+  // =========================================================================
+  // ⚡ 7. GỬI TRỰC TIẾP VÀO FIREBASE FIRESTORE (DASHBOARD REALTIME)
+  // =========================================================================
+  const FIREBASE_PROJECT_ID = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_FIREBASE_PROJECT_ID) || 'dudi-leads';
+  const FIREBASE_API_KEY = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_FIREBASE_API_KEY) || 'AIzaSyBv2l4OH6dtaBqCx5D_rxtDT2HkMPfZ3kA';
+
   try {
-    const storedLeads = JSON.parse(localStorage.getItem('dudi_submitted_leads') || '[]');
-    storedLeads.unshift(sanitizedLead);
-    localStorage.setItem('dudi_submitted_leads', JSON.stringify(storedLeads));
+    const firebaseUrl = 'https://firestore.googleapis.com/v1/projects/' + FIREBASE_PROJECT_ID + '/databases/(default)/documents/leads/' + lead_id + '?key=' + FIREBASE_API_KEY;
+    
+    const requirementsText = 'Ngành: ' + industry + ' | Quy mô: ' + pageCount + ' | Tính năng: ' + (features || 'Cơ bản') + ' | Ghi chú: ' + description;
+
+    const firestorePayload = {
+      fields: {
+        id: { stringValue: lead_id },
+        customerName: { stringValue: fullName },
+        phone: { stringValue: phone },
+        email: { stringValue: formData.email || 'Chưa cung cấp' },
+        company: { stringValue: companyName },
+        serviceId: { stringValue: 'dudi-gioithieu' },
+        serviceName: { stringValue: 'Website Giới Thiệu Doanh Nghiệp' },
+        budget: { stringValue: packageId },
+        source: { stringValue: 'Website Giới Thiệu' },
+        sourceUrl: { stringValue: landingUrl },
+        status: { stringValue: 'new' },
+        priority: { stringValue: 'high' },
+        createdAt: { stringValue: createdAt },
+        requirements: { stringValue: requirementsText }
+      }
+    };
+
+    fetch(firebaseUrl, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(firestorePayload)
+    }).then(res => {
+      console.log('🔥 [Firebase Live] Lead synced directly to Dashboard:', lead_id, res.status);
+    }).catch(fbErr => {
+      console.error('Firebase Direct Sync Error:', fbErr);
+    });
   } catch (err) {
-    console.error('Failed to store lead:', err);
+    console.error('Lỗi khởi tạo Firebase Request:', err);
   }
 
-  // 8. Send to Google Apps Script Webhook / Email Service (if configured)
-  const DEFAULT_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwxora3D7d7ujt3BY1FyGXcFB8L9lBRvffXVpf3lcvH030qH2gD4ggx4aNOjEl0wvcf/exec';
+  // =========================================================================
+  // ✉️ 8. GỬI SANG GOOGLE APPS SCRIPT ĐỂ GỬI GMAIL CHO ADMIN
+  // =========================================================================
+  const DEFAULT_GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXebGSlwFUgoIc-tlEx7uE_qcwbOTFspy3oqdSk4Rw21gDCORXj_dvCqpP2wf0NHVFgg/exec';
   const googleScriptUrl =
-    import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
-    localStorage.getItem('dudi_google_script_url') ||
+    (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_GOOGLE_SCRIPT_URL) ||
     DEFAULT_GOOGLE_SCRIPT_URL;
 
   if (googleScriptUrl) {
     try {
-      await fetch(googleScriptUrl, {
+      fetch(googleScriptUrl, {
         method: 'POST',
-        mode: 'no-cors', // Google Apps Script requires no-cors on client side
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
         },
         body: JSON.stringify(sanitizedLead)
-      });
+      }).catch(err => console.warn('Apps Script dispatch notice:', err));
     } catch (sendErr) {
-      console.warn('Webhook dispatch failed, but lead was recorded locally:', sendErr);
+      console.warn('Webhook dispatch failed:', sendErr);
     }
   }
 
@@ -158,7 +176,7 @@ export async function submitLeadApi(formData) {
     success: true,
     status: 200,
     lead_id,
-    message: "Gửi yêu cầu thành công!",
+    message: 'Gửi yêu cầu thành công! DUDI sẽ liên hệ lại với bạn sớm nhất.',
     data: sanitizedLead
   };
 }
